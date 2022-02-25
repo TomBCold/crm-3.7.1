@@ -13,6 +13,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.post('/auth', async (req, res) => {
+  const {email, password} = req.body;
+  const manager = await User.findOne({where : {email, password}, raw: true});  
+  if (manager) {
+    delete manager.password  
+    res.json({manager})
+  }
+  res.end()
+})
+
 app.get('/clients', async (req, res) => {
   const clients = await Client.findAll({ include: { model: User }, order: [['id', 'DESC']] });
   res.json(clients);

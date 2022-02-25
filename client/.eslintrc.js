@@ -20,7 +20,7 @@ module.exports = {
   ],
   rules: {
     'react/prop-types': 0,
-    'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/react-in-jsx-scope': 'off',
     'comma-dangle': ['error', 'never'],
     'react/jsx-uses-react': 'error',

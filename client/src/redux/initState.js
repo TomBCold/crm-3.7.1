@@ -1,4 +1,6 @@
 export const initState = {
   drivers: [],
-  forwarders: []
+  forwarders: [],
+  clients: [],
+  contracts: []
 };

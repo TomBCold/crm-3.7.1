@@ -1,0 +1,14 @@
+.container{
+  display:flex;
+  width: 100%;
+}
+
+.column{
+  display:flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.css-abpaoy-MuiGrid-root {
+  max-width: 100%;
+}

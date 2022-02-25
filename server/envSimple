@@ -1,2 +1,2 @@
 PORT=3001
-DB_CONNECT=postgres://admin:123qwe@localhost:5432/crm
+DB_CONNECT=postgres://admin:12345qwe@localhost:5432/crm

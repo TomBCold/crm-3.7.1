@@ -7,7 +7,6 @@ import ContractString from '../ContractString/ContractString';
 
 export default function ContractList() {
   const contracts = useSelector((state) => state.contracts);
-  console.log(contracts);
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>

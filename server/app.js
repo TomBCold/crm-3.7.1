@@ -1,20 +1,44 @@
 require('dotenv').config();
 const express = require('express');
+
 const cors = require('cors');
 const path = require('path');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const {
   Client, User, Contract, Driver, Forwarder, ClientInvoice, SupplierInvoice, Upd
 } = require('./db/models');
 
 const driverRouter = require('./routes/driverRouter');
 const forwarderRouter = require('./routes/forwarderRouter');
+// const {checkAuthorisation} = require('./middleware/allMiddleware')
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: true,
+  credentials: true,
+}))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  store: new FileStore(),
+  secret: process.env.SESSION_SECRET ?? 'asdfg',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false },
+  name: 'authorisation',
+}));
+
+app.use((req, res, next) => {
+  // res.locals.username = req.session?.user; // optional chaining operator
+  res.locals.userid = req.session?.userId;
+  next();
+});
 
 
 app.use('/', driverRouter)
@@ -25,9 +49,11 @@ app.post('/auth', async (req, res) => {
   const manager = await User.findOne({where : {email, password}, raw: true});  
   if (manager) {
     delete manager.password  
-    res.json({manager})
+    req.session.userId = manager.id
+    console.log(req.session.userId);
+   return res.json({manager})
   }
-  res.end()
+  res.status(401).end()
 })
 
 app.get('/clients', async (req, res) => {
@@ -35,8 +61,7 @@ app.get('/clients', async (req, res) => {
   res.json(clients);
 });
 
-app.get('/contracts', async (req, res) => {
-  console.log('!!!!!!!');
+app.get('/contracts',  async (req, res) => {
   const contracts = await Contract.findAll({
     include: [
       {

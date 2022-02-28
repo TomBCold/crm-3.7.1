@@ -4,22 +4,24 @@ import { React, useState } from 'react';
 import {
   Form, FormGroup, Input, Label, Button
 } from 'reactstrap';
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './Auth.module.css';
+import { signUpUser } from '../../redux/actions/userAC';
 // import { MainPage } from '../MainPage/MainPage';
 
 function Auth() {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // const dispatch = useDispatch();
   const authHandler = async (e) => {
     e.preventDefault();
-    // dispatch(authInput(email, password));
-    const res = await axios.post('/auth', { email, password });
-    console.log(res.data);
-    if (res.data.manager) {
+    dispatch(signUpUser({ email, password }));
+    if (user) {
       navigate('/');
     }
   };

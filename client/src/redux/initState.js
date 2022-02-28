@@ -2,5 +2,7 @@ export const initState = {
   drivers: [],
   forwarders: [],
   clients: [],
-  contracts: []
+  contracts: [],
+  user: null
+
 };

@@ -1,7 +1,7 @@
-'use strict';
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Forwarder extends Model {
     /**
@@ -11,15 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.Contract, {foreignKey: 'forwarderId'});
+      this.hasMany(models.Contract, { foreignKey: 'forwarderId' });
     }
   }
+
   Forwarder.init({
     name: DataTypes.STRING,
     telephone: DataTypes.BIGINT
   }, {
     sequelize,
-    modelName: 'Forwarder',
+    modelName: 'Forwarder'
   });
   return Forwarder;
 };

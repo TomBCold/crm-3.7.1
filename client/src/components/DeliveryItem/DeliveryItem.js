@@ -1,30 +1,29 @@
 import React from 'react';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import FolderIcon from '@mui/icons-material/Folder';
 import ListItemText from '@mui/material/ListItemText';
-import ListItem from '@mui/material/ListItem';
+import {
+  Avatar,
+  IconButton, List, ListItemButton, Stack
+} from '@mui/material';
+import ModalDelete from '../ModalDelete/ModalDelete';
 
 function DeliveryItem({ el, car }) {
-  console.log(el);
   return (
-    <ListItem
-      secondaryAction={(
+    <List component="div" disablePadding>
+      <ListItemButton sx={{ pl: 5 }}>
+        <Stack direction="row" spacing={2}>
+          <Avatar src="/broken-image.jpg" />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </Stack>
+
+        <ListItemText primary={el.id}>{el.id}</ListItemText>
+        <ListItemText primary={el.name}>{el.name}</ListItemText>
+        <ListItemText primary={el.telephone}>{el.telephone}</ListItemText>
+        <ListItemText primary={car}>{car}</ListItemText>
         <IconButton edge="end" aria-label="delete">
-          <DeleteIcon />
+          <ModalDelete el={el} />
         </IconButton>
-      )}
-    >
-      <ListItemAvatar>
-        <Avatar><FolderIcon /></Avatar>
-      </ListItemAvatar>
-      <ListItemText primary={el.id}>{el.id}</ListItemText>
-      <ListItemText primary={el.name}>{el.name}</ListItemText>
-      <ListItemText primary={el.telephone}>{el.telephone}</ListItemText>
-      <ListItemText primary={car}>{car}</ListItemText>
-    </ListItem>
+      </ListItemButton>
+    </List>
   );
 }
 

@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+
+import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
-import { getAllForwardersFromServer } from '../../redux/ac/forwardersAc';
-import { getAllDriversFromServer } from '../../redux/ac/driverAc';
-// import delCss from './del.module.css';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Collapse from '@mui/material/Collapse';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllDriversFromServer } from '../../redux/actions/driverAc';
 
 import DeliveryItem from '../DeliveryItem/DeliveryItem';
+import ModalDr from '../ModalDr/ModalDr';
+import DeliveryListFor from '../DeliveryListFor/DeliveryListFor';
 
 export default function DeliveryList() {
   const drivers = useSelector((state) => state.drivers);
@@ -16,24 +22,35 @@ export default function DeliveryList() {
   useEffect(() => {
     dispatch(getAllDriversFromServer());
   }, []);
-  console.log(drivers);
 
-  const forwarders = useSelector((state) => state.forwarders);
-  useEffect(() => {
-    dispatch(getAllForwardersFromServer());
-  }, []);
-  console.log('=====', forwarders);
+  const [openDr, setOpenDr] = React.useState(false);
+
+  const handleClickDr = () => {
+    setOpenDr(!openDr);
+  };
+
   return (
+    <>
+      <List
+        sx={{ width: '100%', bgcolor: 'background.paper' }}
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+        subheader={(
+          <ListSubheader component="div" id="nested-list-subheader">
+            Список водителей
+          </ListSubheader>
+        )}
+      >
 
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid sx={{ maxWidth: '100%' }} item xs={12} md={6}>
-        <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-          Тут будет поиск
-        </Typography>
-        {/* <div className={delCss.container}>
-          <div className={delCss.column}> */}
-        <List>
-          Водители
+        <ListItemButton onClick={handleClickDr}>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Водители" />
+          {openDr ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openDr} timeout="auto" unmountOnExit>
+          <ModalDr />
           {drivers.map((el) => (
             <DeliveryItem
               key={el.id}
@@ -41,36 +58,10 @@ export default function DeliveryList() {
               car={el.CarType.title}
             />
           ))}
-        </List>
-        {/* </div>
-          <div className={delCss.column}> */}
-        <List>
-          Экспедиторы
-          {forwarders.map((elem) => (
-            <DeliveryItem
-              key={elem.id}
-              el={elem}
-            />
-          ))}
-        </List>
-        {/* </div>
-        </div> */}
-      </Grid>
-    </Box>
-    // <div>
-    //   <ul className="list-group my-3">
-    //  {drivers.map((drive, index) => <DeliveryItem key={drive.id} index={index} drive={drive} />)}
-    //   </ul>
-    //   <ul className="list-group my-3">
-    //     {forwarders.map((forwarder, index) => (
-    //       <DeliveryItem
-    //         key={forwarder.id}
-    //         index={index}
-    //         forwarder={forwarder}
-    //       />
-    //     ))}
-    //   </ul>
-    // </div>
+        </Collapse>
 
+      </List>
+      <DeliveryListFor />
+    </>
   );
 }

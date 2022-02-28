@@ -1,7 +1,7 @@
-'use strict';
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Contract extends Model {
     /**
@@ -11,15 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.ClientInvoice, {foreignKey: 'contractId'});
-      this.hasMany(models.SupplierInvoice, {foreignKey: 'contractId'});
-      this.hasMany(models.Upd, {foreignKey: 'contractId'});
-      this.belongsTo(models.User, {foreignKey: 'userId'});
-      this.belongsTo(models.Client, {foreignKey: 'clientId'});
-      this.belongsTo(models.Driver, {foreignKey: 'driverId'});
-      this.belongsTo(models.Forwarder, {foreignKey: 'forwarderId'});
+      this.hasMany(models.ClientInvoice, { foreignKey: 'contractId' });
+      this.hasMany(models.SupplierInvoice, { foreignKey: 'contractId' });
+      this.hasMany(models.Comment, { foreignKey: 'contractId' });
+      this.hasMany(models.Upd, { foreignKey: 'contractId' });
+      this.belongsTo(models.User, { foreignKey: 'userId' });
+      this.belongsTo(models.Client, { foreignKey: 'clientId' });
+      this.belongsTo(models.Driver, { foreignKey: 'driverId' });
+      this.belongsTo(models.Forwarder, { foreignKey: 'forwarderId' });
     }
   }
+
   Contract.init({
     userId: DataTypes.INTEGER,
     clientId: DataTypes.INTEGER,
@@ -33,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     statusPackage: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'Contract',
+    modelName: 'Contract'
   });
   return Contract;
 };

@@ -7,6 +7,9 @@ export const clientReducer = (state = initState, action) => {
     case 'SET_CLIENTS':
       return payload;
 
+    case 'ADD_CLIENT':
+      return payload;
+
     default:
       return state;
   }

@@ -1,30 +1,50 @@
+/* eslint-disable react/self-closing-comp */
 import * as React from 'react';
 
-import { Avatar, Box, Container } from '@mui/material';
+import {
+  Avatar, Container, Grid, Paper
+} from '@mui/material';
+import Header from '../Header/Header';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 function UserPage() {
   return (
+    <>
+      <Header />
 
-    <Container>
-      <div>
-        <Box sx={{ width: '50%' }}>
-          1
-          <Box sx={{ width: '40%', height: '100%' }}>
-            <Avatar
-              alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
-              sx={{ width: 200, height: 200 }}
-            />
-          </Box>
+      <Paper>
+        <Container fixed>
+          <Grid container spacing={2}>
+            <Grid item md={6}>
 
-          <div>2</div>
-        </Box>
+              <Avatar
+                alt="Remy Sharp"
+                src="/static/images/avatar/1.jpg"
+                sx={{ width: 260, height: 260 }}
+              >
 
-      </div>
+              </Avatar>
 
-    </Container>
+            </Grid>
+            <Grid item md={6}>
+              ll
+              hhh
+              hhh
+              hhh
+              hhh
+              hhh
+              hhh
+              hhh
+              hhh
+              hhh
+              hhh
+              hh
 
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
+    </>
   );
 }
 

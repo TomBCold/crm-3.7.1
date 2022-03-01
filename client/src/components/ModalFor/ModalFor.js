@@ -18,11 +18,9 @@ function ModalFor() {
   };
   const handleNameFor = (e) => {
     setInputNameFor(e.target.value);
-    // console.log('text:',input);
   };
   const handleTelephoneFor = (e) => {
     setInputTelephoneFor(e.target.value);
-    // console.log('text:',input);
   };
   const handleChengeSubmit = () => {
     dispatch(addForwarderFromServer(inputNameFor, inputTelephoneFor));

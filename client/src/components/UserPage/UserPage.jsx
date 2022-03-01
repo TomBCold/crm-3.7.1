@@ -2,48 +2,104 @@
 import * as React from 'react';
 
 import {
-  Avatar, Container, Grid, Paper
+  Avatar, Card, CardActions, CardContent, Container, Grid, Paper, Typography
 } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import Header from '../Header/Header';
+
 // eslint-disable-next-line import/no-extraneous-dependencies
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary
+}));
 
 function UserPage() {
   return (
     <>
       <Header />
 
-      <Paper>
-        <Container fixed>
-          <Grid container spacing={2}>
-            <Grid item md={6}>
+      <Container fixed>
 
-              <Avatar
-                alt="Remy Sharp"
-                src="/static/images/avatar/1.jpg"
-                sx={{ width: 260, height: 260 }}
-              >
-
-              </Avatar>
-
-            </Grid>
-            <Grid item md={6}>
-              ll
-              hhh
-              hhh
-              hhh
-              hhh
-              hhh
-              hhh
-              hhh
-              hhh
-              hhh
-              hhh
-              hh
-
-            </Grid>
+        <Grid
+          container
+          spacing={4}
+          sx={{ height: 400 }}
+        >
+          <Grid item md={4}>
+            <Avatar
+              alt="Remy Sharp"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7mI0x_kfxX6yA3HkKDu897-ofpEr6QmMiQ&usqp=CAU"
+              sx={{ width: 260, height: 260 }}
+            >
+            </Avatar>
           </Grid>
-        </Container>
-      </Paper>
+          <Grid item xs={8}>
+            <Grid container spacing={2}>
+              <Grid item md={5}>
+                <Item> Имя :</Item>
+              </Grid>
+              <Grid item md={7}>
+                <Item>xs=4</Item>
+              </Grid>
+              <Grid item md={5}>
+                <Item> Должность :</Item>
+              </Grid>
+              <Grid item md={7}>
+                <Item>xs=4</Item>
+              </Grid>
+              <Grid item md={5}>
+                <Item> Почта :</Item>
+              </Grid>
+              <Grid item md={7}>
+                <Item>xs=4</Item>
+              </Grid>
+              <Grid item md={5}>
+                <Item> Телефон :</Item>
+              </Grid>
+              <Grid item md={7}>
+                <Item>xs=4</Item>
+              </Grid>
+            </Grid>
+
+          </Grid>
+        </Grid>
+
+      </Container>
+      <Container fixed>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <Item>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    тут будет
+                  </Typography>
+
+                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    статиститка
+                  </Typography>
+                  <Typography variant="body2">
+                    .
+                  </Typography>
+                </CardContent>
+                <CardActions>
+
+                </CardActions>
+              </Card>
+            </Item>
+          </Grid>
+          <Grid item xs={6}>
+            <Item>и тут статистика за год</Item>
+
+          </Grid>
+        </Grid>
+
+      </Container>
+
     </>
   );
 }

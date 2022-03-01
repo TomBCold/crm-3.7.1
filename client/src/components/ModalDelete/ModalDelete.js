@@ -10,7 +10,6 @@ import { useDispatch } from 'react-redux';
 import { deleteForwarderFromServer } from '../../redux/actions/forwardersAc';
 
 export default function AlertDialog({ el }) {
-  console.log(el);
   const [open, setOpen] = React.useState(false);
 
   const dispatch = useDispatch();

@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { deleteForwarderFromServer } from '../../redux/actions/forwardersAc';
+// import { deleteDriverFromServer } from '../../redux/actions/driverAc';
 
 export default function AlertDialog({ el }) {
   const [open, setOpen] = React.useState(false);
@@ -16,6 +17,7 @@ export default function AlertDialog({ el }) {
 
   const deleteHandler = () => {
     dispatch(deleteForwarderFromServer(el.id));
+    // dispatch(deleteDriverFromServer(el.id));
     setOpen(false);
   };
 

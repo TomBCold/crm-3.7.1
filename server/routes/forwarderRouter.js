@@ -4,13 +4,13 @@ const { Forwarder } = require('../db/models');
 
 const router = express.Router();
 
-router.get('/forwarders', async (req, res) => {
+router.get('/', async (req, res) => {
   const forwardersAll = await Forwarder.findAll();
   res.json({ forwardersAll });
 });
 
-router.post('/forwarders', async (req, res) => {
-  const { name, telephone } = req.body;
+router.post('/', async (req, res) => {
+  const {name, telephone} = req.body;
   try {
     const forwarder = await Forwarder.create({
       name, telephone
@@ -22,14 +22,14 @@ router.post('/forwarders', async (req, res) => {
   }
 });
 
-router.delete('/forwarders/:id', async (req, res) => {
-  const { id } = req.params;
-  try {
-    await Forwarder.destroy({ where: { id } });
-    res.sendStatus(200);
-  } catch (error) {
-    res.sendStatus(500);
-  }
-});
+  router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+      await Forwarder.destroy({ where: { id } });
+      res.sendStatus(200);
+    } catch (error) {
+      res.sendStatus(500);
+    }
+  });
 
 module.exports = router;

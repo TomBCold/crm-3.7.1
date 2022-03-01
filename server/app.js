@@ -12,6 +12,7 @@ const { User } = require('./db/models');
 const clientRouter = require('./routes/clientRouter');
 const driverRouter = require('./routes/driverRouter');
 const forwarderRouter = require('./routes/forwarderRouter');
+const carTypesRouter = require('./routes/carTypesRouter');
 const contractRouter = require('./routes/contractRouter');
 // const {checkAuthorisation} = require('./middleware/allMiddleware')
 
@@ -40,9 +41,9 @@ app.use((req, res, next) => {
   res.locals.userid = req.session?.userId;
   next();
 });
-
-app.use('/', driverRouter);
-app.use('/', forwarderRouter);
+app.use('/drivers', driverRouter)
+app.use('/forwarders', forwarderRouter)
+app.use('/types', carTypesRouter)
 app.use('/client', clientRouter);
 app.use('/contract', contractRouter);
 

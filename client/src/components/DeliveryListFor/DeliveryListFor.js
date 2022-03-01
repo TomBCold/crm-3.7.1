@@ -6,9 +6,9 @@ import {
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DeliveryItem from '../DeliveryItem/DeliveryItem';
 import { getAllForwardersFromServer } from '../../redux/actions/forwardersAc';
 import ModalFor from '../ModalFor/ModalFor';
+import DeliveryItemFor from '../DeliveryItemFor/DeliveryItemFor';
 
 function DeliveryListFor() {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ function DeliveryListFor() {
       <Collapse in={openFor} timeout="auto" unmountOnExit>
         <ModalFor />
         {forwarders.map((elem, index) => (
-          <DeliveryItem
+          <DeliveryItemFor
             index={index}
             key={elem.id}
             el={elem}

@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const upload = require('./middleware/allMiddleware');
-const { User } = require('./db/models');
+const { User, Role } = require('./db/models');
 
 const clientRouter = require('./routes/clientRouter');
 const driverRouter = require('./routes/driverRouter');
@@ -39,31 +39,30 @@ app.use((req, res, next) => {
   res.locals.userid = req.session?.userId;
   next();
 });
-app.use('/drivers', driverRouter)
-app.use('/forwarders', forwarderRouter)
-app.use('/types', carTypesRouter)
+app.use('/drivers', driverRouter);
+app.use('/forwarders', forwarderRouter);
+app.use('/types', carTypesRouter);
 app.use('/client', clientRouter);
 app.use('/contract', contractRouter);
 
 app.post('/auth', async (req, res) => {
   const { email, password } = req.body;
-  const manager = await User.findOne({include:{model: Role}, where: { email, password }, raw: true });
+  const manager = await User.findOne({ include: { model: Role }, where: { email, password }, raw: true });
   if (manager) {
-    delete manager.password  
-    req.session.user = manager
-    req.session.userId = manager.id
-   return res.json({manager})
+    delete manager.password;
+    req.session.user = manager;
+    req.session.userId = manager.id;
+    return res.json({ manager });
   }
-  res.status(401).end()
-})
+  res.status(401).end();
+});
 
 app.get('/check', async (req, res) => {
-  console.log('------',req.session.user);
+  console.log('------', req.session.user);
   if (req.session.user) {
-  return res.json(req.session.user)
-} else {
-    res.sendStatus(401)
+    return res.json(req.session.user);
   }
+  res.sendStatus(401);
 });
 
 app.listen(process.env.PORT, () => {

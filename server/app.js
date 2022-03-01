@@ -13,6 +13,7 @@ const {
 
 const driverRouter = require('./routes/driverRouter');
 const forwarderRouter = require('./routes/forwarderRouter');
+const carTypesRouter = require('./routes/carTypesRouter');
 // const {checkAuthorisation} = require('./middleware/allMiddleware')
 
 const app = express();
@@ -42,8 +43,9 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/', driverRouter)
-app.use('/', forwarderRouter)
+app.use('/drivers', driverRouter)
+app.use('/forwarders', forwarderRouter)
+app.use('/types', carTypesRouter)
 
 app.post('/auth', async (req, res) => {
   const { email, password } = req.body;

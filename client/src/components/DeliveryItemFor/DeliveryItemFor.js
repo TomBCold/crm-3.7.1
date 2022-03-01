@@ -4,9 +4,9 @@ import {
   Avatar,
   IconButton, List, ListItemButton, Stack
 } from '@mui/material';
-import ModalDeleteDr from '../ModalDeleteDr/ModalDeleteDr';
+import ModalDeleteFor from '../ModalDelete/ModalDeleteFor';
 
-function DeliveryItem({ el }) {
+function DeliveryItemFor({ el }) {
   return (
     <List component="div" disablePadding>
       <ListItemButton sx={{ pl: 5 }}>
@@ -18,13 +18,12 @@ function DeliveryItem({ el }) {
         <ListItemText primary={el.id}>{el.id}</ListItemText>
         <ListItemText primary={el.name}>{el.name}</ListItemText>
         <ListItemText primary={el.telephone}>{el.telephone}</ListItemText>
-        <ListItemText primary={el.CarType.title}>{el.CarType.title}</ListItemText>
         <IconButton edge="end" aria-label="delete">
-          <ModalDeleteDr el={el} />
+          <ModalDeleteFor el={el} />
         </IconButton>
       </ListItemButton>
     </List>
   );
 }
 
-export default DeliveryItem;
+export default DeliveryItemFor;

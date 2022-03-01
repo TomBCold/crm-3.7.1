@@ -8,6 +8,9 @@ const driversReducer = (state = [], action) => {
         ...state,
         action.payload
       ];
+    case 'DELETE_DRIVER':
+      return state.filter((el) => el.id !== action.payload);
+
     default:
       return state;
   }

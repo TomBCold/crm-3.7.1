@@ -14,7 +14,6 @@ const driverRouter = require('./routes/driverRouter');
 const forwarderRouter = require('./routes/forwarderRouter');
 const carTypesRouter = require('./routes/carTypesRouter');
 const contractRouter = require('./routes/contractRouter');
-// const {checkAuthorisation} = require('./middleware/allMiddleware')
 
 const app = express();
 
@@ -37,7 +36,6 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  // res.locals.username = req.session?.user; // optional chaining operator
   res.locals.userid = req.session?.userId;
   next();
 });
@@ -49,13 +47,23 @@ app.use('/contract', contractRouter);
 
 app.post('/auth', async (req, res) => {
   const { email, password } = req.body;
-  const manager = await User.findOne({ where: { email, password }, raw: true });
+  const manager = await User.findOne({include:{model: Role}, where: { email, password }, raw: true });
   if (manager) {
-    delete manager.password;
-    req.session.userId = manager.id;
-    return res.json({ manager });
+    delete manager.password  
+    req.session.user = manager
+    req.session.userId = manager.id
+   return res.json({manager})
   }
-  res.status(401).end();
+  res.status(401).end()
+})
+
+app.get('/check', async (req, res) => {
+  console.log('------',req.session.user);
+  if (req.session.user) {
+  return res.json(req.session.user)
+} else {
+    res.sendStatus(401)
+  }
 });
 
 app.listen(process.env.PORT, () => {

@@ -7,15 +7,16 @@ import ClientList from '../ClientList/ClientList';
 import DeliveryList from '../DeliveryList/DeliveryList';
 import { getClients } from '../../redux/actions/clientAC';
 import { getContracts } from '../../redux/actions/contractAC';
+import { checkUser } from '../../redux/actions/userAC';
 
 function MainPage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getClients());
-  });
-  useEffect(() => {
+    dispatch(checkUser());
     dispatch(getContracts());
-  });
+  }, []);
+
   return (
     <div>
       <Header />

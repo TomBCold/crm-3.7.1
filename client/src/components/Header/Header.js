@@ -79,7 +79,7 @@ function Header() {
               }}
             >
               {pages.map((page, i) => (
-                <Link to={link[i]}>
+                <Link key={page} to={link[i]}>
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
@@ -97,7 +97,7 @@ function Header() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, i) => (
-              <Link to={link[i]}>
+              <Link key={page} to={link[i]}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}

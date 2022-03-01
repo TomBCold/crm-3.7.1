@@ -20,10 +20,10 @@ export const userLogout = () => async (dispatch) => {
   dispatch(setUser(null));
 };
 export const checkUser = () => async (dispatch) => {
-  const res = await axios.post('/user/check');
-  if (res.statusText) {
-    dispatch(setUser(res.data.user));
-  } else {
-    dispatch(setUser(null));
+  try {
+    const res = await axios.get('/check');
+    dispatch(setUser(res.data));
+  } catch (error) {
+    dispatch(setUser({}));
   }
 };

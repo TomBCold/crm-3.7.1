@@ -10,6 +10,9 @@ export const clientReducer = (state = initState, action) => {
     case 'ADD_CLIENT':
       return payload;
 
+    case 'DEL_CLIENT':
+      return state.filter((el) => el.id !== payload);
+
     default:
       return state;
   }

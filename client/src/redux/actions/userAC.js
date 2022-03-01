@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { SET_USER } from '../types/types';
 
 export const setUser = (value) => ({
   type: 'SET_USER',
@@ -12,8 +11,7 @@ export const getUser = (input) => async (dispatch) => {
 };
 
 export const signUpUser = ({ email, password }) => async (dispatch) => {
-  const res = await axios.post('/auth', { email, password });
-
+  const res = await axios.post('/auth', { email, password }, { withCredentials: true });
   dispatch(setUser(res.data.manager));
 };
 

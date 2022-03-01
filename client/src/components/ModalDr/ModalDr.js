@@ -1,15 +1,40 @@
 import {
-  Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField
+  Button, Dialog, DialogActions, DialogContent,
+  DialogContentText, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCarTypesFromServer } from '../../redux/actions/carTypeAC';
+import { addDriverFromServer } from '../../redux/actions/driverAc';
 
 function ModalDr() {
   const [openModalDr, setOpenModalDr] = React.useState(false);
+  const carType = useSelector((state) => state.carType);
+  const [inputNameDr, setInputNameDr] = useState('');
+  const [inputTelephoneDr, setInputTelephoneDr] = useState();
+  const [inputTypeDr, setInputTypeDr] = useState(1);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllCarTypesFromServer());
+  }, []);
+  const handleNameDr = (e) => {
+    setInputNameDr(e.target.value);
+  };
+  const handleTelephoneDr = (e) => {
+    setInputTelephoneDr(+e.target.value);
+  };
+  const handleTypeDr = (e) => {
+    setInputTypeDr(e.target.value);
+  };
 
   const handleClickOpen = () => {
     setOpenModalDr(true);
   };
   const handleCloseDr = () => {
+    setOpenModalDr(false);
+  };
+  const handleAddDriver = () => {
+    dispatch(addDriverFromServer(inputNameDr, inputTelephoneDr, inputTypeDr));
     setOpenModalDr(false);
   };
   return (
@@ -24,36 +49,47 @@ function ModalDr() {
             Введите данные водителя
           </DialogContentText>
           <TextField
+            onChange={handleNameDr}
+            value={inputNameDr}
             autoFocus
             margin="dense"
             name="name"
             label="Имя"
-            type="email"
+            type="name"
             fullWidth
             variant="standard"
           />
           <TextField
+            onChange={handleTelephoneDr}
+            value={inputTelephoneDr}
             autoFocus
             margin="dense"
-            name="name"
-            label="Тип машины"
-            type="email"
-            fullWidth
-            variant="standard"
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            name="name"
+            name="telephone"
             label="Номер телефона"
-            type="email"
+            type="numder"
             fullWidth
             variant="standard"
           />
+
+          <FormControl fullWidth style={{ 'margin-top': '5%' }}>
+            <InputLabel id="demo-simple-select-label">Car</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="Car"
+              name="carTypeId"
+              defaultValue={1}
+              onChange={handleTypeDr}
+            >
+              {carType.map((el) => <MenuItem key={el.id} value={el.id}>{el.title}</MenuItem>)}
+
+            </Select>
+          </FormControl>
         </DialogContent>
         <DialogActions>
+
           <Button onClick={handleCloseDr}>Отмена</Button>
-          <Button onClick={handleCloseDr}>Добавить</Button>
+          <Button onClick={handleAddDriver}>Добавить</Button>
         </DialogActions>
       </Dialog>
     </>

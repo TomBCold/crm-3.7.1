@@ -12,9 +12,7 @@ export const getUser = (input) => async (dispatch) => {
 };
 
 export const signUpUser = ({ email, password }) => async (dispatch) => {
-  console.log(email, password);
-  const res = await axios.post('/auth', { email, password }, { withCredentials: true });
-  console.log(res.data.manager);
+  const res = await axios.post('/auth', { email, password });
 
   dispatch(setUser(res.data.manager));
 };
@@ -24,11 +22,10 @@ export const userLogout = () => async (dispatch) => {
   dispatch(setUser(null));
 };
 export const checkUser = () => async (dispatch) => {
-  const res = await axios.post('/user/check');
-  console.log(res);
-  if (res.statusText) {
-    dispatch(setUser(res.data.user));
-  } else {
-    dispatch(setUser(null));
+  try {
+    const res = await axios.get('/check');
+    dispatch(setUser(res.data));
+  } catch (error) {
+    dispatch(setUser({}));
   }
 };

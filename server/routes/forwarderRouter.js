@@ -14,14 +14,13 @@ router.post('/', async (req, res) => {
   try {
     const forwarder = await Forwarder.create({
       name, telephone
-    })
-    res.json({forwarder});
-
-   } catch (error) {
-      console.log(error);
-      res.sendStatus(200);
-    }
-  });
+    });
+    res.json({ forwarder });
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(200);
+  }
+});
 
   router.delete('/:id', async (req, res) => {
     const { id } = req.params;
@@ -32,6 +31,5 @@ router.post('/', async (req, res) => {
       res.sendStatus(500);
     }
   });
-  
 
-  module.exports = router
+module.exports = router;

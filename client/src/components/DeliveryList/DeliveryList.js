@@ -55,7 +55,6 @@ export default function DeliveryList() {
             <DeliveryItem
               key={el.id}
               el={el}
-              car={el.CarType.title}
             />
           ))}
         </Collapse>

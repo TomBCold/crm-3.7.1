@@ -115,7 +115,7 @@ function Header() {
               component="div"
               sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
             >
-              Имя пользовотеля
+              Имя пользователя
             </Typography>
 
             <Box sx={{ flexGrow: 0 }}>

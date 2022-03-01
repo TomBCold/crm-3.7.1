@@ -1,15 +1,12 @@
 // eslint-disable-next-line quotes
 import { React, useState } from 'react';
-// import { React } from 'react';
 import {
   Form, FormGroup, Input, Label, Button
 } from 'reactstrap';
-// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Auth.module.css';
 import { signUpUser } from '../../redux/actions/userAC';
-// import { MainPage } from '../MainPage/MainPage';
 
 function Auth() {
   const navigate = useNavigate();
@@ -17,10 +14,9 @@ function Auth() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const dispatch = useDispatch();
   const authHandler = async (e) => {
     e.preventDefault();
-    dispatch(signUpUser({ email, password }));
+    await dispatch(signUpUser({ email, password }));
     if (user) {
       navigate('/');
     }
@@ -59,7 +55,7 @@ function Auth() {
           <Label for="examplePassword">Password</Label>
         </FormGroup>
         {' '}
-        <Button onClick={(e) => authHandler(e)}>Ввойти</Button>
+        <Button onClick={(e) => authHandler(e)}>Войти</Button>
       </Form>
     </div>
   );

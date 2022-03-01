@@ -5,6 +5,16 @@ export const setContracts = (value) => ({
   payload: value
 });
 export const getContracts = () => async (dispatch) => {
-  const res = await axios('/contracts');
+  const res = await axios('/contract');
   dispatch(setContracts(res.data));
+};
+
+export const deleteContract = (value) => ({
+  type: 'DEL_CONTRACT',
+  payload: value
+});
+
+export const delContract = (id) => async (dispatch) => {
+  await axios.delete(`/contract/${id}`);
+  dispatch(deleteContract(id));
 };

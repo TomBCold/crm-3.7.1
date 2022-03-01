@@ -3,10 +3,10 @@ const checkAuthorisation = (req, res, next) => {
   if (req.session.user) {
     return next();
   }
-  res.redirect('/users/signin');
+  return res.redirect('/auth');
 };
 
-module.exports = { checkAuthorisation};
+module.exports = {checkAuthorisation};
 
 const multer = require('multer');
 

@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const upload = require('./middleware/allMiddleware');
-const { User } = require('./db/models');
+const { User, Role } = require('./db/models');
 
 const clientRouter = require('./routes/clientRouter');
 const driverRouter = require('./routes/driverRouter');

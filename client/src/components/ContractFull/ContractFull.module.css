@@ -20,7 +20,7 @@
 }
 .invoice {
   border: 2px solid;
-  width: 400px;
+  width: 600px;
   height: 220px;
   display: flex;
   flex-direction: column;

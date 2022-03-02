@@ -6,8 +6,10 @@ import { useEffect } from 'react';
 import Auth from './components/Auth/Auth';
 import MainPage from './components/MainPage/MainPage';
 import './App.css';
+
 import { checkUser } from './redux/actions/userAC';
 import RequireAuth from './components/reqiureAuth/requireAuth';
+
 
 
 function App() {

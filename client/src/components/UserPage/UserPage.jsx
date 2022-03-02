@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import * as React from 'react';
 
 import {
@@ -26,9 +25,7 @@ function UserPage() {
 
   return (
     <>
-
       <Container fixed>
-
         <Grid
           container
           spacing={4}
@@ -39,8 +36,7 @@ function UserPage() {
               alt="Remy Sharp"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7mI0x_kfxX6yA3HkKDu897-ofpEr6QmMiQ&usqp=CAU"
               sx={{ width: 260, height: 260 }}
-            >
-            </Avatar>
+            />
           </Grid>
           <Grid item xs={8}>
             <Grid container spacing={2}>
@@ -106,7 +102,6 @@ function UserPage() {
 
           </Grid>
         </Grid>
-
       </Container>
     </>
   );

@@ -14,6 +14,7 @@ const driverRouter = require('./routes/driverRouter');
 const forwarderRouter = require('./routes/forwarderRouter');
 const carTypesRouter = require('./routes/carTypesRouter');
 const contractRouter = require('./routes/contractRouter');
+const invoiceRouter = require('./routes/invoiceRouter');
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -44,10 +45,13 @@ app.use('/forwarders', forwarderRouter);
 app.use('/types', carTypesRouter);
 app.use('/client', clientRouter);
 app.use('/contract', contractRouter);
+app.use('/invoice', invoiceRouter);
 
 app.post('/auth', async (req, res) => {
   const { email, password } = req.body;
-  const manager = await User.findOne({ include: { model: Role }, where: { email, password }, raw: true });
+  const manager = await User.findOne(
+    { include: { model: Role }, where: { email, password }, raw: true }
+  );
   if (manager) {
     delete manager.password;
     req.session.user = manager;
@@ -58,7 +62,6 @@ app.post('/auth', async (req, res) => {
 });
 
 app.get('/check', async (req, res) => {
-  // console.log('------', req.session.user);
   if (req.session.user) {
     return res.json(req.session.user);
   }
@@ -66,7 +69,6 @@ app.get('/check', async (req, res) => {
 });
 app.post('/logout', (req,res) => {
   req.session.destroy()
-  console.log(req.session);
   res.end()
 })
 

@@ -22,6 +22,7 @@ function ContractString(
   {
     id,
     clientName,
+    clientId,
     statusApprove,
     statusExport,
     statusPackage,
@@ -96,7 +97,7 @@ function ContractString(
         </div>
       </ListItem>
       <div className={isOpen ? style.isOpen : style.isDisable}>
-        <ContractFull id={id} />
+        <ContractFull key={id} id={id} clientId={clientId} />
       </div>
 
     </>

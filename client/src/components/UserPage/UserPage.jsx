@@ -62,8 +62,6 @@ function UserPage() {
         <Grid sm={{ border: 20 }}>
           <Button variant="outlined"> редактировать </Button>
         </Grid>
-        <br></br>
-        <br></br>
       </Container>
       <Container fixed>
         <Grid container spacing={2}>

@@ -18,3 +18,15 @@ export const delContract = (id) => async (dispatch) => {
   await axios.delete(`/contract/${id}`);
   dispatch(deleteContract(id));
 };
+
+export const putStatusContract = (value, status) => ({
+  type: 'PUT_CONTRACT',
+  payload: { value, status }
+});
+
+export const putStatusContractServer = (id, stutus, status) => async (dispatch) => {
+  console.log(stutus);
+  const resp = await axios.put(`/contract/${id}`, { stutus, status });
+  console.log(resp.data);
+  dispatch(putStatusContract(resp.data, status));
+};

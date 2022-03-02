@@ -38,6 +38,7 @@ router.get('/', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
+  console.log('УДАЛИТЬ ========>');
   const { id } = req.params;
   try {
     await ClientInvoice.destroy({ where: { contractId: id } });
@@ -48,6 +49,21 @@ router.delete('/:id', async (req, res) => {
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+router.put('/:id', async (req, res) => {
+  console.log('ИЗМЕНИТЬ========', req.body);
+  const { status, stutus } = req.body
+  try {
+
+    console.log('00000');
+    await Contract.update({ [status]: stutus }, { where: { id: req.params.id } });
+    const newStatus = await Contract.findOne({ where: { id: req.params.id } });
+    res.json(newStatus);
+    console.log('newStatus ========>', newStatus);
+  } catch (error) {
     res.sendStatus(500);
   }
 });

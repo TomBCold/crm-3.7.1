@@ -4,15 +4,16 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import { useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Status from '../Status/Status';
 import style from './ContractFull.module.css';
+// import StatusItem from '../StatusItem/StatusItem';
 
 function ContractFull({ id, clientId }) {
   const [value, setValue] = React.useState(null);
-  // const dispatch = useDispatch();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -40,7 +41,7 @@ function ContractFull({ id, clientId }) {
   return (
     <div className={style.content}>
       <div className={style.status}>
-        <Status />
+        <Status id={id} />
       </div>
       <div className={style.info}>
         <div className={style.invoice}>

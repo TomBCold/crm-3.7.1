@@ -8,6 +8,7 @@ import DeliveryList from '../DeliveryList/DeliveryList';
 import { getClients } from '../../redux/actions/clientAC';
 import { getContracts } from '../../redux/actions/contractAC';
 import { checkUser } from '../../redux/actions/userAC';
+import UserPage from '../UserPage/UserPage';
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function MainPage() {
         <Route path="/" element={<ContractList />} />
         <Route path="/clients" element={<ClientList />} />
         <Route path="/delivery" element={<DeliveryList />} />
+        <Route path="/user" element={<UserPage />} />
       </Routes>
     </div>
   );

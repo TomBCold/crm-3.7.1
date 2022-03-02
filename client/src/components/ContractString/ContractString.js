@@ -50,8 +50,8 @@ function ContractString(
     <>
       <ListItem
         secondaryAction={(
-          <IconButton onClick={() => setIsOpenDel(!isOpenDel)} edge="end" aria-label="delete">
-            <DeleteIcon />
+          <IconButton edge="end" aria-label="delete">
+            <DeleteIcon onClick={() => setIsOpenDel(!isOpenDel)} />
             <Dialog
               open={isOpenDel}
               aria-labelledby="alert-dialog-title"

@@ -44,7 +44,7 @@ function DeliveryListFor() {
         <ModalFor />
         {forwarders.map((elem, index) => (
           <DeliveryItemFor
-            index={index}
+            index={index + 1}
             key={elem.id}
             el={elem}
           />

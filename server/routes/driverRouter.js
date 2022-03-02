@@ -27,6 +27,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
+  console.log(id);
   try {
     await Driver.destroy({ where: { id } });
     res.sendStatus(200);

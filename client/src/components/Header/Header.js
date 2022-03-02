@@ -11,15 +11,18 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { userLogout } from '../../redux/actions/userAC';
 
 const pages = ['Сделки', 'Клиенты', 'Водители'];
 const settings = ['Мой профиль', 'Выйти из профиля'];
 const link = ['/', '/clients', '/delivery'];
 
 function Header() {
+  const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const user = useSelector((state) => state.user);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -40,6 +43,7 @@ function Header() {
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
+
             <Typography
               variant="h6"
               noWrap
@@ -79,7 +83,7 @@ function Header() {
                 }}
               >
                 {pages.map((page, i) => (
-                  <Link to={link[i]}>
+                  <Link key={page} to={link[i]}>
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">{page}</Typography>
                     </MenuItem>
@@ -97,7 +101,7 @@ function Header() {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page, i) => (
-                <Link to={link[i]}>
+                <Link key={page} to={link[i]}>
                   <Button
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -115,7 +119,7 @@ function Header() {
               component="div"
               sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
             >
-              Имя пользователя
+              {user.name}
             </Typography>
 
             <Box sx={{ flexGrow: 0 }}>
@@ -147,7 +151,11 @@ function Header() {
                     <Typography textAlign="center">{settings[0]}</Typography>
                   </MenuItem>
                 </Link>
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={() => {
+                  handleCloseUserMenu();
+                  dispatch(userLogout());
+                }}
+                >
                   <Typography textAlign="center">{settings[1]}</Typography>
                 </MenuItem>
               </Menu>

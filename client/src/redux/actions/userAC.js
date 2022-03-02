@@ -15,15 +15,17 @@ export const signUpUser = ({ email, password }) => async (dispatch) => {
   dispatch(setUser(res.data.manager));
 };
 
-export const userLogout = () => async (dispatch) => {
-  await axios.post('/user/logout');
-  dispatch(setUser(null));
-};
 export const checkUser = () => async (dispatch) => {
   try {
     const res = await axios.get('/check');
-    dispatch(setUser(res.data));
+    setTimeout(() => {
+      dispatch(setUser({ ...res.data, status: 'done' }));
+    }, 1000);
   } catch (error) {
-    dispatch(setUser({}));
+    dispatch(setUser({ status: 'error' }));
   }
+};
+export const userLogout = () => async (dispatch) => {
+  await axios.post('/logout');
+  dispatch(checkUser());
 };

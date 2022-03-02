@@ -51,8 +51,9 @@ export default function DeliveryList() {
         </ListItemButton>
         <Collapse in={openDr} timeout="auto" unmountOnExit>
           <ModalDr />
-          {drivers.map((el) => (
+          {drivers.map((el, index) => (
             <DeliveryItem
+              index={index + 1}
               key={el.id}
               el={el}
             />

@@ -63,7 +63,7 @@ function Auth() {
       </div>
     );
   }
-  return <h1>Loading</h1>;
+  return <h1>Загрузка</h1>;
 }
 
 export default Auth;

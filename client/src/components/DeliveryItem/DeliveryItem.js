@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import ModalDeleteDr from '../ModalDeleteDr/ModalDeleteDr';
 
-function DeliveryItem({ el }) {
+function DeliveryItem({ el, index }) {
   return (
     <List component="div" disablePadding>
       <ListItemButton sx={{ pl: 5 }}>
@@ -15,7 +15,7 @@ function DeliveryItem({ el }) {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </Stack>
 
-        <ListItemText primary={el.id}>{el.id}</ListItemText>
+        <ListItemText primary={index}>{index}</ListItemText>
         <ListItemText primary={el.name}>{el.name}</ListItemText>
         <ListItemText primary={el.telephone}>{el.telephone}</ListItemText>
         <ListItemText primary={el.CarType.title}>{el.CarType.title}</ListItemText>

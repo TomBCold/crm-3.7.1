@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import * as React from 'react';
 
 import {Button, Card, CardContent, Container, Grid, Paper, Typography
@@ -21,9 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 function UserPage() {
   return (
     <>
-
       <Container fixed>
-
         <Grid
           container
           spacing={4}
@@ -96,7 +93,6 @@ function UserPage() {
 
           </Grid>
         </Grid>
-
       </Container>
     </>
   );

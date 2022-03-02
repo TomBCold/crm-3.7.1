@@ -22,6 +22,7 @@ function ContractString(
   {
     id,
     clientName,
+    clientId,
     statusApprove,
     statusExport,
     statusPackage,
@@ -49,8 +50,8 @@ function ContractString(
     <>
       <ListItem
         secondaryAction={(
-          <IconButton onClick={() => setIsOpenDel(!isOpenDel)} edge="end" aria-label="delete">
-            <DeleteIcon />
+          <IconButton edge="end" aria-label="delete">
+            <DeleteIcon onClick={() => setIsOpenDel(!isOpenDel)} />
             <Dialog
               open={isOpenDel}
               aria-labelledby="alert-dialog-title"
@@ -96,7 +97,7 @@ function ContractString(
         </div>
       </ListItem>
       <div className={isOpen ? style.isOpen : style.isDisable}>
-        <ContractFull />
+        <ContractFull key={id} id={id} clientId={clientId} />
       </div>
 
     </>

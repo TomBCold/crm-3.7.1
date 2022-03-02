@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import ModalDeleteFor from '../ModalDelete/ModalDeleteFor';
 
-function DeliveryItemFor({ el }) {
+function DeliveryItemFor({ el, index }) {
   return (
     <List component="div" disablePadding>
       <ListItemButton sx={{ pl: 5 }}>
@@ -15,7 +15,7 @@ function DeliveryItemFor({ el }) {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </Stack>
 
-        <ListItemText primary={el.id}>{el.id}</ListItemText>
+        <ListItemText primary={index}>{index}</ListItemText>
         <ListItemText primary={el.name}>{el.name}</ListItemText>
         <ListItemText primary={el.telephone}>{el.telephone}</ListItemText>
         <IconButton edge="end" aria-label="delete">

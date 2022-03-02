@@ -22,6 +22,7 @@ function MainPage() {
   return (
     <div>
       <Header />
+
       <Container maxWidth="xl">
 
         <Routes>
@@ -31,6 +32,7 @@ function MainPage() {
           <Route path="/user" element={<UserPage />} />
         </Routes>
       </Container>
+
     </div>
   );
 }

@@ -58,7 +58,6 @@ app.post('/auth', async (req, res) => {
 });
 
 app.get('/check', async (req, res) => {
-  console.log('------', req.session.user);
   if (req.session.user) {
     return res.json(req.session.user);
   }
@@ -66,7 +65,6 @@ app.get('/check', async (req, res) => {
 });
 app.post('/logout', (req,res) => {
   req.session.destroy()
-  console.log(req.session);
   res.end()
 })
 

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 
 import Box from '@mui/material/Box';
@@ -5,12 +6,15 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+// import { useSelector } from 'react-redux';
 import Status from '../Status/Status';
 import style from './ContractFull.module.css';
+// import StatusItem from '../StatusItem/StatusItem';
 
-function ContractFull() {
+function ContractFull({ id }) {
   const [value, setValue] = React.useState('1');
-
+  // const contract = useSelector((state) => state.contracts);
+  // const statusArr = Object.entries(contract.find((el) => el.id === id)).filter((el2) => el2[0] === 'statusApprove' || el2[0] === 'statusExport' || el2[0] === 'statusPackage' || el2[0] === 'statusPaymentClient' || el2[0] === 'statusPaymentSupplier' || el2[0] === 'statusSignature');
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -18,7 +22,7 @@ function ContractFull() {
   return (
     <div className={style.content}>
       <div className={style.status}>
-        <Status />
+        <Status id={id} />
       </div>
       <div className={style.info}>
         <div className={style.invoice}>

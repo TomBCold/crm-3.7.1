@@ -58,7 +58,7 @@ app.post('/auth', async (req, res) => {
 });
 
 app.get('/check', async (req, res) => {
-  console.log('------', req.session.user);
+  // console.log('------', req.session.user);
   if (req.session.user) {
     return res.json(req.session.user);
   }

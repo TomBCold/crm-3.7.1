@@ -96,7 +96,7 @@ function ContractString(
         </div>
       </ListItem>
       <div className={isOpen ? style.isOpen : style.isDisable}>
-        <ContractFull />
+        <ContractFull id={id} />
       </div>
 
     </>

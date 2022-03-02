@@ -9,6 +9,16 @@ export const contractReducer = (state = initState, action) => {
 
     case 'DEL_CONTRACT':
       return state.filter((el) => el.id !== payload);
+    case 'PUT_CONTRACT':
+      return state.map((el) => {
+        if (el.id === action.payload.value.id) {
+          return {
+            ...el,
+            [action.payload.status]: action.payload.value[action.payload.status]
+          };
+        }
+        return el;
+      });
 
     default:
       return state;

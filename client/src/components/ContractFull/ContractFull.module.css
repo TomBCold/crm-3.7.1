@@ -20,11 +20,9 @@
 }
 .invoice {
   border: 2px solid;
-  width: 600px;
   height: 220px;
   display: flex;
   flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
 }
 

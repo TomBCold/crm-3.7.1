@@ -5,9 +5,9 @@ import {
   Avatar, Card, CardActions, CardContent, Container, Grid, Paper, Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Header from '../Header/Header';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { useSelector } from 'react-redux';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,9 +18,11 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function UserPage() {
+  const user = useSelector((state) => state.user);
+  console.log(user['Role.title']);
+
   return (
     <>
-      <Header />
 
       <Container fixed>
 
@@ -43,25 +45,25 @@ function UserPage() {
                 <Item> Имя :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user.name}</Item>
               </Grid>
               <Grid item md={5}>
                 <Item> Должность :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user['Role.title']}</Item>
               </Grid>
               <Grid item md={5}>
                 <Item> Почта :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user.email}</Item>
               </Grid>
               <Grid item md={5}>
                 <Item> Телефон :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user.telephone}</Item>
               </Grid>
             </Grid>
 

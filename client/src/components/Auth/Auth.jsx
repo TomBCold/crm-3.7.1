@@ -3,7 +3,7 @@ import { React, useState } from 'react';
 import {
   Form, FormGroup, Input, Label, Button
 } from 'reactstrap';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Auth.module.css';
 import { signUpUser } from '../../redux/actions/userAC';
@@ -28,37 +28,42 @@ function Auth() {
   const passwordInputHandler = (e) => {
     setPassword(e.target.value);
   };
-
-  return (
-    <div className={style.center}>
-      <h1>CRM 3.7.1</h1>
-      <Form inline>
-        <FormGroup floating>
-          <Input
-            onChange={emailInputHandler}
-            id="exampleEmail"
-            name="email"
-            placeholder="Email"
-            type="email"
-          />
-          <Label for="exampleEmail">Email</Label>
-        </FormGroup>
-        {' '}
-        <FormGroup floating>
-          <Input
-            onChange={passwordInputHandler}
-            id="examplePassword"
-            name="password"
-            placeholder="Password"
-            type="password"
-          />
-          <Label for="examplePassword">Password</Label>
-        </FormGroup>
-        {' '}
-        <Button onClick={(e) => authHandler(e)}>Войти</Button>
-      </Form>
-    </div>
-  );
+  if (user.status === 'done') {
+    return <Navigate to="/" />;
+  }
+  if (user.status === 'error') {
+    return (
+      <div className={style.center}>
+        <h1>CRM 3.7.1</h1>
+        <Form inline>
+          <FormGroup floating>
+            <Input
+              onChange={emailInputHandler}
+              id="exampleEmail"
+              name="email"
+              placeholder="Email"
+              type="email"
+            />
+            <Label for="exampleEmail">Email</Label>
+          </FormGroup>
+          {' '}
+          <FormGroup floating>
+            <Input
+              onChange={passwordInputHandler}
+              id="examplePassword"
+              name="password"
+              placeholder="Password"
+              type="password"
+            />
+            <Label for="examplePassword">Password</Label>
+          </FormGroup>
+          {' '}
+          <Button onClick={(e) => authHandler(e)}>Войти</Button>
+        </Form>
+      </div>
+    );
+  }
+  return <h1>Loading</h1>;
 }
 
 export default Auth;

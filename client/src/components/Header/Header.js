@@ -11,6 +11,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { userLogout } from '../../redux/actions/userAC';
 
 const pages = ['Сделки', 'Клиенты', 'Водители'];
 const settings = ['Мой профиль', 'Выйти из профиля'];
@@ -19,7 +21,7 @@ const link = ['/', '/clients', '/delivery'];
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const user = useSelector((state) => state.user);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -115,7 +117,7 @@ function Header() {
               component="div"
               sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
             >
-              Имя пользователя
+              {user.name}
             </Typography>
 
             <Box sx={{ flexGrow: 0 }}>
@@ -147,7 +149,11 @@ function Header() {
                     <Typography textAlign="center">{settings[0]}</Typography>
                   </MenuItem>
                 </Link>
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={() => {
+                  handleCloseUserMenu();
+                  userLogout();
+                }}
+                >
                   <Typography textAlign="center">{settings[1]}</Typography>
                 </MenuItem>
               </Menu>

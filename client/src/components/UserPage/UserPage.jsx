@@ -2,12 +2,16 @@
 import * as React from 'react';
 
 import {
-  Avatar, Card, CardActions, CardContent, Container, Grid, Paper, Typography
+  Avatar, Button, Card, CardContent, Container, Grid, Paper, Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Header from '../Header/Header';
+
+import Charts from '../Charts/Charts';
+import Piee from '../Piee/Piee';
+
 
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { useSelector } from 'react-redux';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,9 +22,11 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function UserPage() {
+  const user = useSelector((state) => state.user);
+  console.log(user['Role.title']);
+
   return (
     <>
-      <Header />
 
       <Container fixed>
 
@@ -43,63 +49,66 @@ function UserPage() {
                 <Item> Имя :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user.name}</Item>
               </Grid>
               <Grid item md={5}>
                 <Item> Должность :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user['Role.title']}</Item>
               </Grid>
               <Grid item md={5}>
                 <Item> Почта :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user.email}</Item>
               </Grid>
               <Grid item md={5}>
                 <Item> Телефон :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user.telephone}</Item>
               </Grid>
             </Grid>
 
           </Grid>
         </Grid>
-
+        <Grid sm={{ border: 20 }}>
+          <Button variant="outlined"> редактировать профиль </Button>
+        </Grid>
+        <br></br>
+        <br></br>
       </Container>
       <Container fixed>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={7}>
             <Item>
               <Card sx={{ minWidth: 275 }}>
                 <CardContent>
-                  <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    тут будет
-                  </Typography>
-
                   <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    статиститка
+                    статиститка за год
                   </Typography>
                   <Typography variant="body2">
-                    .
+                    <Charts />
                   </Typography>
                 </CardContent>
-                <CardActions>
-
-                </CardActions>
               </Card>
             </Item>
           </Grid>
-          <Grid item xs={6}>
-            <Item>и тут статистика за год</Item>
+          <Grid item xs={4}>
+
+            <CardContent>
+
+              статиститка
+
+              <Piee />
+
+            </CardContent>
 
           </Grid>
         </Grid>
 
       </Container>
-
     </>
   );
 }

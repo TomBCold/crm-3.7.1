@@ -3,6 +3,6 @@ export const initState = {
   forwarders: [],
   clients: [],
   contracts: [],
-  user: null,
+  user: { status: 'process' },
   carType: []
 };

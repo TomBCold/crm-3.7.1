@@ -13,13 +13,12 @@ router.post('/', async (req, res) => {
   try {
     const driver = await Driver.create({
       name, telephone, carTypeId
-    })
+    });
     const newDriver = await Driver.findOne({
-      order: [ [ 'id', 'DESC' ]],
+      order: [['id', 'DESC']],
       include: { model: CarType }
     });
     res.json({ newDriver });
-
   } catch (error) {
     console.log(error);
     res.sendStatus(200);
@@ -32,9 +31,9 @@ router.delete('/:id', async (req, res) => {
     await Driver.destroy({ where: { id } });
     res.sendStatus(200);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 });
 
-
-module.exports = router
+module.exports = router;

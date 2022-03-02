@@ -20,6 +20,7 @@ export default function ContractList() {
               id={el.id}
               userName={el.User.name}
               driverName={el.Driver.name}
+              clientId={el.Client.id}
               clientName={el.Client.name}
               forwarderName={el.Forwarder.name}
               statusApprove={el.statusApprove}

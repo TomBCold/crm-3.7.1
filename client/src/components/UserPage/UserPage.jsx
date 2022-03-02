@@ -1,13 +1,9 @@
-/* eslint-disable react/self-closing-comp */
 import * as React from 'react';
 
 import {
   Avatar, Card, CardActions, CardContent, Container, Grid, Paper, Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Header from '../Header/Header';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -20,10 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 function UserPage() {
   return (
     <>
-      <Header />
-
       <Container fixed>
-
         <Grid
           container
           spacing={4}
@@ -34,8 +27,7 @@ function UserPage() {
               alt="Remy Sharp"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7mI0x_kfxX6yA3HkKDu897-ofpEr6QmMiQ&usqp=CAU"
               sx={{ width: 260, height: 260 }}
-            >
-            </Avatar>
+            />
           </Grid>
           <Grid item xs={8}>
             <Grid container spacing={2}>
@@ -86,20 +78,15 @@ function UserPage() {
                     .
                   </Typography>
                 </CardContent>
-                <CardActions>
-
-                </CardActions>
+                <CardActions />
               </Card>
             </Item>
           </Grid>
           <Grid item xs={6}>
             <Item>и тут статистика за год</Item>
-
           </Grid>
         </Grid>
-
       </Container>
-
     </>
   );
 }

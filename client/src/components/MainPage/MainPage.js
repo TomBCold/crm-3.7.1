@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import Container from '@mui/material/Container';
 import Header from '../Header/Header';
 import ContractList from '../ContractList/ContractList';
 import ClientList from '../ClientList/ClientList';
@@ -21,12 +22,17 @@ function MainPage() {
   return (
     <div>
       <Header />
-      <Routes>
-        <Route path="/" element={<ContractList />} />
-        <Route path="/clients" element={<ClientList />} />
-        <Route path="/delivery" element={<DeliveryList />} />
-        <Route path="/user" element={<UserPage />} />
-      </Routes>
+
+      <Container maxWidth="xl">
+
+        <Routes>
+          <Route path="/" element={<ContractList />} />
+          <Route path="/clients" element={<ClientList />} />
+          <Route path="/delivery" element={<DeliveryList />} />
+          <Route path="/user" element={<UserPage />} />
+        </Routes>
+      </Container>
+
     </div>
   );
 }

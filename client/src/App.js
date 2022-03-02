@@ -24,7 +24,7 @@ function App() {
             <RequireAuth>
               <MainPage />
             </RequireAuth>
-)}
+          )}
         />
         <Route path="/auth" element={<Auth />} />
       </Routes>

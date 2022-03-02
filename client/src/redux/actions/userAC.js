@@ -12,7 +12,6 @@ export const getUser = (input) => async (dispatch) => {
 
 export const signUpUser = ({ email, password }) => async (dispatch) => {
   const res = await axios.post('/auth', { email, password }, { withCredentials: true });
-  console.log(res);
   dispatch(setUser(res.data.manager));
 };
 
@@ -26,8 +25,7 @@ export const checkUser = () => async (dispatch) => {
     dispatch(setUser({ status: 'error' }));
   }
 };
-export const userLogout = () => async () => {
+export const userLogout = () => async (dispatch) => {
   await axios.post('/logout');
-  // dispatch(checkUser());
-  checkUser();
+  dispatch(checkUser());
 };

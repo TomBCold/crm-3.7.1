@@ -1,4 +1,3 @@
-
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 // import { useEffect } from 'react';
@@ -9,8 +8,6 @@ import './App.css';
 
 import { checkUser } from './redux/actions/userAC';
 import RequireAuth from './components/reqiureAuth/requireAuth';
-
-
 
 function App() {
   const dispatch = useDispatch();

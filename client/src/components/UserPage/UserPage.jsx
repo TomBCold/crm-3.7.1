@@ -6,12 +6,11 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
+import { useSelector } from 'react-redux';
 import Charts from '../Charts/Charts';
 import Piee from '../Piee/Piee';
 
-
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { useSelector } from 'react-redux';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

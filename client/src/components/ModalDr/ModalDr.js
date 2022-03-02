@@ -35,6 +35,8 @@ function ModalDr() {
   };
   const handleAddDriver = () => {
     dispatch(addDriverFromServer(inputNameDr, inputTelephoneDr, inputTypeDr));
+    setInputNameDr('');
+    setInputTelephoneDr('');
     setOpenModalDr(false);
   };
   return (

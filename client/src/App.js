@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Auth from './components/Auth/Auth';
 import MainPage from './components/MainPage/MainPage';
 import './App.css';
-import UserPage from './components/UserPage/UserPage';
+// import UserPage from './components/UserPage/UserPage';
 
 function App() {
   const user = useSelector((state) => state.user);

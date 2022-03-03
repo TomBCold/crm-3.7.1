@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+// import { WebSocketServer } from 'ws';
 const FileStore = require('session-file-store')(session);
 const upload = require('./middleware/allMiddleware');
 const { User, Role } = require('./db/models');
@@ -17,6 +18,17 @@ const contractRouter = require('./routes/contractRouter');
 const invoiceRouter = require('./routes/invoiceRouter');
 
 const app = express();
+
+// const wss = new WebSocket.Server({ port: 9077 });
+
+// wss.on('connection', (client) => {
+//   console.log('connection');
+//   client.on('message', (data) => {
+//     console.log('received: %s', data);
+//   });
+
+//   client.send('something');
+// });
 
 app.use(cors({
   origin: true,

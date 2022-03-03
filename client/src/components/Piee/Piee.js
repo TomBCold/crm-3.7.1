@@ -6,10 +6,11 @@ const data = [
   { name: 'Group A', value: 400 },
   { name: 'Group B', value: 300 },
   { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 }
+  { name: 'Group D', value: 200 },
+  { name: 'Group F', value: 700 }
 ];
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF2022'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -19,6 +20,7 @@ const renderCustomizedLabel = ({
   innerRadius,
   outerRadius,
   percent
+  // index
 }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -36,21 +38,21 @@ const renderCustomizedLabel = ({
     </text>
   );
 };
-export default function Piee() {
+export default function App() {
   return (
-    <PieChart width={300} height={300}>
+    <PieChart width={400} height={400}>
       <Pie
         data={data}
-        cx={170}
-        cy={120}
+        cx={200}
+        cy={200}
         labelLine={false}
         label={renderCustomizedLabel}
         outerRadius={80}
         fill="#8884d8"
         dataKey="value"
       >
-        {data.map(() => (
-          <Cell key={`cell-${1}`} fill={COLORS[1 % COLORS.length]} />
+        {data.map((entry, index) => (
+          <Cell key={`cell-${entry}`} fill={COLORS[index % COLORS.length]} />
         ))}
       </Pie>
     </PieChart>

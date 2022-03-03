@@ -32,7 +32,6 @@ function ContractFull({
       formData.append('file', img);
       formData.append('fileName', img.name);
       formData.append('sum', sum);
-      console.log(img);
       await axios.post('/invoice/clientInvoice', formData, {
         headers: {
           'content-type': 'multipart/form-data'

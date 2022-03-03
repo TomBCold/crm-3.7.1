@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import {Button, Card, CardContent, Container, Grid, Paper, Typography
+import {
+  Button, Card, CardContent, Container, Grid, Paper, Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Charts from '../Charts/Charts';

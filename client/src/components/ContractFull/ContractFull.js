@@ -8,8 +8,6 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TabPanel from '@mui/lab/TabPanel';
-// import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
-// import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Status from '../Status/Status';
 import style from './ContractFull.module.css';
@@ -19,7 +17,6 @@ function ContractFull({
   id, clientId, clientInvoices, supplierInvoices, driverName, forwarderName, upds
 }) {
   const [value, setValue] = React.useState(null);
-  // const dispatch = useDispatch();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -65,7 +62,7 @@ function ContractFull({
   return (
     <div className={style.content}>
       <div className={style.status}>
-        <Status />
+        <Status id={id} />
       </div>
       <div className={style.info}>
         <div className={style.invoice}>

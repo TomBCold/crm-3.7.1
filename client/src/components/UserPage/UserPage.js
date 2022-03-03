@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import {
   Avatar, Button, Card, CardContent, Container, Grid, Paper, Typography
 } from '@mui/material';
@@ -21,6 +19,9 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function UserPage() {
   const user = useSelector((state) => state.user);
+
+  console.log(user['Role.title']);
+
   return (
     <>
       <Container fixed>

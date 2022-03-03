@@ -16,13 +16,13 @@ export default function ContractList() {
     <div>
       <Box sx={{ flexGrow: 1 }}>
         <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-          <Button variant="outlined" onClick={() => setOpen(true)}>
-            Добавить
-          </Button>
-          <Modal open={open} onClose={handleClose}>
-            {' '}
-            <NewContract />
-          </Modal>
+          {/* <Button variant="outlined" onClick={() => setOpen(true)}> */}
+          {/*  Добавить */}
+          {/* </Button> */}
+          {/* <Modal open={open} onClose={handleClose}> */}
+          {/*  {' '} */}
+          {/*  <NewContract /> */}
+          {/* </Modal> */}
         </Typography>
         <List sx={{ width: '100%' }}>
           {contracts.map((el) => (

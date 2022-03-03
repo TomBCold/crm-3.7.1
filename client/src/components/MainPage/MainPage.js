@@ -10,6 +10,8 @@ import { getClients } from '../../redux/actions/clientAC';
 import { getContracts } from '../../redux/actions/contractAC';
 import { checkUser } from '../../redux/actions/userAC';
 import UserPage from '../UserPage/UserPage';
+import { getAllDriversFromServer } from '../../redux/actions/driverAc';
+import { getAllForwardersFromServer } from '../../redux/actions/forwardersAc';
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -17,8 +19,9 @@ function MainPage() {
     dispatch(getClients());
     dispatch(checkUser());
     dispatch(getContracts());
+    dispatch(getAllDriversFromServer());
+    dispatch(getAllForwardersFromServer());
   }, []);
-
   return (
     <div>
       <Header />

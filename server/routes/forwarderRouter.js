@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const {name, telephone} = req.body;
+  const { name, telephone } = req.body;
   try {
     const forwarder = await Forwarder.create({
       name, telephone
@@ -22,14 +22,14 @@ router.post('/', async (req, res) => {
   }
 });
 
-  router.delete('/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-      await Forwarder.destroy({ where: { id } });
-      res.sendStatus(200);
-    } catch (error) {
-      res.sendStatus(500);
-    }
-  });
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Forwarder.destroy({ where: { id } });
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+});
 
 module.exports = router;

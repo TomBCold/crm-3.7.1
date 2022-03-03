@@ -1,12 +1,10 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import { Dialog } from '@mui/material';
 import ContractString from '../ContractString/ContractString';
-import NewContract from '../NewContract/NewContract';
 
 export default function ContractList() {
   const contracts = useSelector((state) => state.contracts);

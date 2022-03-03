@@ -20,7 +20,7 @@ export const checkUser = () => async (dispatch) => {
     const res = await axios.get('/check');
     setTimeout(() => {
       dispatch(setUser({ ...res.data, status: 'done' }));
-    }, 1000);
+    }, 700);
   } catch (error) {
     dispatch(setUser({ status: 'error' }));
   }

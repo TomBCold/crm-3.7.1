@@ -34,7 +34,9 @@ function Auth() {
   if (user.status === 'error') {
     return (
       <div className={style.center}>
-        <h1>CRM 3.7.1</h1>
+        <div>
+          <img src="/1234.png" alt="ooo" />
+        </div>
         <Form inline>
           <FormGroup floating>
             <Input

@@ -67,10 +67,10 @@ app.get('/check', async (req, res) => {
   }
   res.sendStatus(401);
 });
-app.post('/logout', (req,res) => {
-  req.session.destroy()
-  res.end()
-})
+app.post('/logout', (req, res) => {
+  req.session.destroy();
+  res.end();
+});
 
 app.listen(process.env.PORT, () => {
   console.log('server start ', process.env.PORT);

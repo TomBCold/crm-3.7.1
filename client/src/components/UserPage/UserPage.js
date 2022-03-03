@@ -21,8 +21,6 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function UserPage() {
   const user = useSelector((state) => state.user);
-  console.log(user['Role.title']);
-
   return (
     <>
       <Container fixed>

@@ -13,6 +13,8 @@ import { checkUser } from '../../redux/actions/userAC';
 import UserPage from '../UserPage/UserPage';
 import style from './MainPage.module.css';
 import ChatPage from '../ChatPage/ChatPage';
+import { getAllDriversFromServer } from '../../redux/actions/driverAc';
+import { getAllForwardersFromServer } from '../../redux/actions/forwardersAc';
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -20,10 +22,11 @@ function MainPage() {
     dispatch(getClients());
     dispatch(checkUser());
     dispatch(getContracts());
+    dispatch(getAllDriversFromServer());
+    dispatch(getAllForwardersFromServer());
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div className={style.tools}>
       <Header />

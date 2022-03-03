@@ -15,6 +15,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { putStatusContractServer } from '../../redux/actions/contractAC';
+
 // import { useSelector } from 'react-redux';
 
 function Status({ id }) {
@@ -25,7 +26,6 @@ function Status({ id }) {
   const [clPay, setClPay] = useState(contract[index].statusPaymentClient);
   const [suppl, setSuppl] = useState(contract[index].statusPaymentSupplier);
 
-  console.log(index);
   const [stutus, setStutus] = useState(contract[index].statusSignature);
   const dispatch = useDispatch();
 
@@ -62,7 +62,8 @@ function Status({ id }) {
         <ListItem>
           <ListItemAvatar>
 
-            {agreed ? <SentimentSatisfiedAltIcon fontSize="large" color="success" /> : <SentimentVeryDissatisfiedIcon fontSize="large" />}
+            {agreed ? <SentimentSatisfiedAltIcon fontSize="large" color="success" />
+              : <SentimentVeryDissatisfiedIcon fontSize="large" />}
 
           </ListItemAvatar>
           {agreed ? <ListItemText primary="Согласовано" /> : <ListItemText primary="Не согласовано" />}

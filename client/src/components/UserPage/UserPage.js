@@ -1,12 +1,11 @@
-import * as React from 'react';
-
 import {
-  Button, Card, CardContent, Container, Grid, Paper, Typography
+  Avatar, Button, Card, CardContent, Container, Grid, Paper, Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
+
+import { useSelector } from 'react-redux';
 import Charts from '../Charts/Charts';
 import Piee from '../Piee/Piee';
-import AvatarComp from '../Header/AvatarComp/AvatarComp';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 
@@ -19,6 +18,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function UserPage() {
+  const user = useSelector((state) => state.user);
+
+  console.log(user['Role.title']);
+
   return (
     <>
       <Container fixed>
@@ -28,7 +31,11 @@ function UserPage() {
           sx={{ height: 400 }}
         >
           <Grid item md={4}>
-            <AvatarComp />
+            <Avatar
+              alt="Remy Sharp"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7mI0x_kfxX6yA3HkKDu897-ofpEr6QmMiQ&usqp=CAU"
+              sx={{ width: 260, height: 260 }}
+            />
           </Grid>
           <Grid item xs={8}>
             <Grid container spacing={2}>
@@ -36,32 +43,32 @@ function UserPage() {
                 <Item> Имя :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user.name}</Item>
               </Grid>
               <Grid item md={5}>
                 <Item> Должность :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user['Role.title']}</Item>
               </Grid>
               <Grid item md={5}>
                 <Item> Почта :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user.email}</Item>
               </Grid>
               <Grid item md={5}>
                 <Item> Телефон :</Item>
               </Grid>
               <Grid item md={7}>
-                <Item>xs=4</Item>
+                <Item>{user.telephone}</Item>
               </Grid>
             </Grid>
 
           </Grid>
         </Grid>
         <Grid sm={{ border: 20 }}>
-          <Button variant="outlined"> редактировать </Button>
+          <Button variant="outlined"> редактировать профиль </Button>
         </Grid>
       </Container>
       <Container fixed>

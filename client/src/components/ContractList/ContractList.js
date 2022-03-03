@@ -3,15 +3,15 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
+// import Button from '@mui/material/Button';
+// import Modal from '@mui/material/Modal';
 import ContractString from '../ContractString/ContractString';
-import NewContract from '../NewContract/NewContract';
+// import NewContract from '../NewContract/NewContract';
 
 export default function ContractList() {
   const contracts = useSelector((state) => state.contracts);
-  const [open, setOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
+  // const [open, setOpen] = React.useState(false);
+  // const handleClose = () => setOpen(false);
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>

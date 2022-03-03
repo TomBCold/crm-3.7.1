@@ -8,6 +8,7 @@ import './App.css';
 
 import { checkUser } from './redux/actions/userAC';
 import RequireAuth from './components/reqiureAuth/requireAuth';
+import DirectorPage from './components/DirectorPage/DirectorPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
           )}
         />
         <Route path="/auth" element={<Auth />} />
+        <Route path="/boss" element={<DirectorPage />} />
       </Routes>
     </div>
   );

@@ -50,7 +50,7 @@ function Header() {
               component="div"
               sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
             >
-              3.7.1
+              <img src="/1234.png" alt="logo" style={{ height: '90px' }} />
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

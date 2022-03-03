@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+// import { WebSocketServer } from 'ws';
 const FileStore = require('session-file-store')(session);
 const upload = require('./middleware/allMiddleware');
 const { User, Role } = require('./db/models');
@@ -18,6 +19,17 @@ const invoiceRouter = require('./routes/invoiceRouter');
 const roleRouter = require('./routes/roleRouter');
 
 const app = express();
+
+// const wss = new WebSocket.Server({ port: 9077 });
+
+// wss.on('connection', (client) => {
+//   console.log('connection');
+//   client.on('message', (data) => {
+//     console.log('received: %s', data);
+//   });
+
+//   client.send('something');
+// });
 
 app.use(cors({
   origin: true,
@@ -69,10 +81,10 @@ app.get('/check', async (req, res) => {
   }
   res.sendStatus(401);
 });
-app.post('/logout', (req,res) => {
-  req.session.destroy()
-  res.end()
-})
+app.post('/logout', (req, res) => {
+  req.session.destroy();
+  res.end();
+});
 
 app.get('/users', async (req,res) => {
   const users = await User.findAll({include: { model: Role } });

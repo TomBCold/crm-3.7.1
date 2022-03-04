@@ -15,7 +15,6 @@ const driverRouter = require('./routes/driverRouter');
 const forwarderRouter = require('./routes/forwarderRouter');
 const carTypesRouter = require('./routes/carTypesRouter');
 const contractRouter = require('./routes/contractRouter');
-const invoiceRouter = require('./routes/invoiceRouter');
 const roleRouter = require('./routes/roleRouter');
 
 const app = express();
@@ -58,7 +57,6 @@ app.use('/forwarders', forwarderRouter);
 app.use('/types', carTypesRouter);
 app.use('/client', clientRouter);
 app.use('/contract', contractRouter);
-app.use('/invoice', invoiceRouter);
 app.use('/roles', roleRouter);
 
 app.post('/auth', async (req, res) => {
@@ -86,29 +84,29 @@ app.post('/logout', (req, res) => {
   res.end();
 });
 
-app.get('/users', async (req,res) => {
-  const users = await User.findAll({include: { model: Role } });
+app.get('/users', async (req, res) => {
+  const users = await User.findAll({ include: { model: Role } });
 
-  res.json({ users })
-})
+  res.json({ users });
+});
 
 app.post('/addUser', async (req, res) => {
-   console.log(12311111111, req.body);
-    try {
-      const {name, telephone, password, email, roleId } =  req.body
-      const addUser = await User.create({ name, telephone, password, email, roleId });
-      const newUser = await User.findOne({
-        order: [['id', 'DESC']],
-        include: { model: Role }
-      });
-      console.log(123123123, newUser);
-      res.json({ newUser });
-    } catch (err) {
-      res.sendStatus(500);
-    }
-  });
-
-
+  try {
+    const {
+      name, telephone, password, email, roleId
+    } = req.body;
+    const addUser = await User.create({
+      name, telephone, password, email, roleId
+    });
+    const newUser = await User.findOne({
+      order: [['id', 'DESC']],
+      include: { model: Role }
+    });
+    res.json({ newUser });
+  } catch (err) {
+    res.sendStatus(500);
+  }
+});
 
 app.listen(process.env.PORT, () => {
   console.log('server start ', process.env.PORT);

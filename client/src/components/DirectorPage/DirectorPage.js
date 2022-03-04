@@ -25,7 +25,6 @@ function DirectorPage() {
   useEffect(() => {
     dispatch(getUsersThunk());
   }, []);
-  console.log(users);
 
   return (
     <Container style={{ backgroundColor: '#F5F5F5' }}>
@@ -47,7 +46,14 @@ function DirectorPage() {
             </Typography>
             {users.map((el) => (
               // eslint-disable-next-line max-len
-              <ListGroupItem style={{ color: '0D1B42', borderRadius: 25 }} key={el.id} id={el.id} name={el.name} photo={el.photo} telephone={el.telephone}>
+              <ListGroupItem
+                style={{ color: '0D1B42', borderRadius: 25 }}
+                key={el.id}
+                id={el.id}
+                name={el.name}
+                photo={el.photo}
+                telephone={el.telephone}
+              >
                 <Avatar
                   alt="Avatar"
                   src={el.photo}

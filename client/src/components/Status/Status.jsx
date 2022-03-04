@@ -25,7 +25,6 @@ function Status({ id }) {
   const [clPay, setClPay] = useState(contract[index].statusPaymentClient);
   const [suppl, setSuppl] = useState(contract[index].statusPaymentSupplier);
 
-  console.log(index);
   const [stutus, setStutus] = useState(contract[index].statusSignature);
   const dispatch = useDispatch();
 

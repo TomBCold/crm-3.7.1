@@ -40,7 +40,7 @@ function Header() {
 
   return (
     <>
-      <AppBar position="static" style={{ background: '#0D1B42', height: 100 }}>
+      <AppBar position="static" style={{ height: 100 }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
 

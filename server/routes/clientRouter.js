@@ -25,6 +25,7 @@ router.delete('/:id', async (req, res) => {
     await Client.destroy({ where: { id } });
     res.sendStatus(200);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 });

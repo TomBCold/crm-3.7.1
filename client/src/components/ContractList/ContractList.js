@@ -4,11 +4,12 @@ import List from '@mui/material/List';
 import { useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import { Dialog } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import ContractString from '../ContractString/ContractString';
+import NewContract from '../NewContract/NewContract';
 
 export default function ContractList() {
   const contracts = useSelector((state) => state.contracts);
-  console.log(contracts);
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
   return (
@@ -41,6 +42,7 @@ export default function ContractList() {
               clientInvoices={el.ClientInvoices}
               supplierInvoices={el.SupplierInvoices}
               upds={el.Upds}
+              date={new Date(el.createdAt).toLocaleDateString()}
             />
           ))}
         </List>

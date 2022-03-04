@@ -16,7 +16,6 @@ function ContractFull({
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <div className={style.content}>
       <div className={style.status}>

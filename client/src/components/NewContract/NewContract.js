@@ -40,11 +40,14 @@ function NewContract({ handleClose }) {
       contractForm.append('driverId', driverId);
       contractForm.append('forwarderId', forwarderId);
       contractForm.append('imgClientInvoice', imgClientInvoice);
+      contractForm.append('fileNameClientInvoice', imgClientInvoice.name);
       contractForm.append('sumClientInvoice', sumClientInvoice);
       // contractForm.append('supplierId', supplierId);
       contractForm.append('imgSupplierInvoice', imgSupplierInvoice);
+      contractForm.append('fileNameSupplierInvoice', imgSupplierInvoice.name);
       contractForm.append('sumSupplierInvoice', sumSupplierInvoice);
       contractForm.append('urlUpd', imgUpd);
+      contractForm.append('fileNameUpd', imgUpd.name);
       contractForm.append('sumUpd', sumUpd);
       dispatch(addContract(contractForm));
       handleClose();
@@ -161,9 +164,14 @@ function NewContract({ handleClose }) {
           </div>
         </div>
       </div>
-      <Button onClick={submitHandler}>
-        Добавить
-      </Button>
+      <div>
+        <Button onClick={submitHandler}>
+          Добавить
+        </Button>
+        <Button onClick={handleClose}>
+          Отменить
+        </Button>
+      </div>
     </div>
   );
 }

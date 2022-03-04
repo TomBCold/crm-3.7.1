@@ -7,6 +7,7 @@ import {
 import ModalDeleteFor from '../ModalDelete/ModalDeleteFor';
 
 function DeliveryItemFor({ el, index }) {
+  console.log(el);
   return (
     <List component="div" disablePadding>
       <ListItemButton sx={{ pl: 5 }}>

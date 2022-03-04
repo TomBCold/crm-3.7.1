@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Divider, InputBase, Paper, Typography
 } from '@mui/material';
-import DeliveryListFor from '../DeliveryItemFor/DeliveryItemFor';
+import DeliveryListFor from '../DeliveryListFor/DeliveryListFor';
 import { getAllDriversFromServer } from '../../redux/actions/driverAc';
 import DeliveryItem from '../DeliveryItem/DeliveryItem';
 import ModalDr from '../ModalDr/ModalDr';

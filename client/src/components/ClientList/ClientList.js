@@ -41,7 +41,13 @@ export default function ClientList() {
   };
   return (
     <div>
-      <Button variant="outlined" onClick={() => setIsOpen(!isOpen)}>
+      <Button
+        style={{
+          color: '#FF5E5B', borderColor: '#FF5E5B', marginTop: 40, marginBottom: 30
+        }}
+        variant="outlined"
+        onClick={() => setIsOpen(!isOpen)}
+      >
         Добавить
       </Button>
       <Dialog open={isOpen}>

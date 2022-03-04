@@ -8,26 +8,22 @@ const data = [
   {
     name: 'Январь',
 
-    pv: 2400,
-    amt: 2400
+    pv: 2400
   },
   {
     name: 'Февраль',
 
-    pv: 1398,
-    amt: 2210
+    pv: 1398
   },
   {
     name: 'Март',
 
-    pv: 9800,
-    amt: 2290
+    pv: 9800
   },
   {
     name: 'Апрель',
 
-    pv: 3908,
-    amt: 2000
+    pv: 3908
   },
   {
     name: 'Май',
@@ -61,7 +57,7 @@ export default function Charts() {
 
       <Tooltip />
       <Legend />
-      <Bar dataKey="pv" fill="#ffeb3b" />
+      <Bar dataKey="pv" fill="#FF5E5B" />
 
     </BarChart>
   );

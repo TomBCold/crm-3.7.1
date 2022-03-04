@@ -69,9 +69,9 @@ function ContractFull({
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList onChange={handleChange} aria-label="lab API tabs example">
-                  <Tab label="Счета от клиентов" value="1" />
-                  <Tab label="Счета от поставщиков" value="2" />
-                  <Tab label="Отгрузочные документы" value="3" />
+                  <Tab style={{ color: '#FF5E5B' }} label="Счета от клиентов" value="1" />
+                  <Tab style={{ color: '#FF5E5B' }} label="Счета от поставщиков" value="2" />
+                  <Tab style={{ color: '#FF5E5B' }} label="Отгрузочные документы" value="3" />
                 </TabList>
               </Box>
               <TabPanel value="1">
@@ -88,7 +88,7 @@ function ContractFull({
                     onChange={(e) => setSum(e.target.value)}
                   />
                 </div> */}
-                <DriveFolderUploadIcon sx={{ fontSize: 70 }} color="primary" onClick={handleOpen} />
+                <DriveFolderUploadIcon sx={{ fontSize: 70 }} style={{ color: '#FF5E5B' }} onClick={handleOpen} />
                 {/* <Button onClick={handleOpen}>Open modal</Button> */}
                 <div>
                   <Modal

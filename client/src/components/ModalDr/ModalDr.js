@@ -41,7 +41,13 @@ function ModalDr() {
   };
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button
+        style={{
+          color: '#FF5E5B', borderColor: '#FF5E5B', marginTop: 20, marginBottom: 20
+        }}
+        variant="outlined"
+        onClick={handleClickOpen}
+      >
         Добавить водителя
       </Button>
       <Dialog open={openModalDr} onClose={handleCloseDr}>
@@ -90,8 +96,8 @@ function ModalDr() {
         </DialogContent>
         <DialogActions>
 
-          <Button onClick={handleCloseDr}>Отмена</Button>
-          <Button onClick={handleAddDriver}>Добавить</Button>
+          <Button style={{ color: '#FF5E5B' }} onClick={handleCloseDr}>Отмена</Button>
+          <Button style={{ color: '#FF5E5B' }} onClick={handleAddDriver}>Добавить</Button>
         </DialogActions>
       </Dialog>
     </>

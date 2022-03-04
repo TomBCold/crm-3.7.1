@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import ListSubheader from '@mui/material/ListSubheader';
+// import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -10,6 +10,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
+import { Typography } from '@mui/material';
 import { getAllDriversFromServer } from '../../redux/actions/driverAc';
 
 import DeliveryItem from '../DeliveryItem/DeliveryItem';
@@ -36,9 +37,9 @@ export default function DeliveryList() {
         component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={(
-          <ListSubheader component="div" id="nested-list-subheader">
+          <Typography variant="h6" component="div" style={{ marginBottom: 20, color: '#0D1B42' }}>
             Список водителей
-          </ListSubheader>
+          </Typography>
         )}
       >
 

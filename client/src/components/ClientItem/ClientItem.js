@@ -40,8 +40,8 @@ function ClientItem({
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => setIsOpen(!isOpen)}>Отменить</Button>
-              <Button onClick={deleteHandler} autoFocus>
+              <Button style={{ color: '#FF5E5B' }} onClick={() => setIsOpen(!isOpen)}>Отменить</Button>
+              <Button style={{ color: '#FF5E5B' }} onClick={deleteHandler} autoFocus>
                 Удалить
               </Button>
             </DialogActions>

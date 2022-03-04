@@ -69,13 +69,13 @@ function AddUser() {
   };
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button style={{ color: '#FF5E5B', borderColor: '#FF5E5B' }} variant="outlined" onClick={handleClickOpen}>
         Добавить сотрудника
       </Button>
       <Dialog open={openModalDr} onClose={handleCloseDr}>
         <DialogTitle>Subscribe</DialogTitle>
         <DialogContent>
-          <DialogContentText>Введите данные водителя</DialogContentText>
+          <DialogContentText>Введите сотрудника</DialogContentText>
           <TextField
             onChange={handleName}
             value={inputName}
@@ -140,8 +140,8 @@ function AddUser() {
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDr}>Отмена</Button>
-          <Button onClick={handleAddDriver}>Добавить</Button>
+          <Button style={{ color: '#FF5E5B' }} onClick={handleCloseDr}>Отмена</Button>
+          <Button style={{ color: '#FF5E5B' }} onClick={handleAddDriver}>Добавить</Button>
         </DialogActions>
       </Dialog>
     </>

@@ -13,8 +13,8 @@ export default function ContractList() {
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
   return (
-    <div>
-      <Box sx={{ flexGrow: 1 }}>
+    <Container style={{ bgcolor: '#F5F5F5' }}>
+      <Box sx={{ flexGrow: 1, bgcolor: '#F5F5F5', borderRadius: 8 }}>
         <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
           <Button variant="outlined" onClick={() => setOpen(true)}>
             Добавить
@@ -46,6 +46,6 @@ export default function ContractList() {
           ))}
         </List>
       </Box>
-    </div>
+    </Container>
   );
 }

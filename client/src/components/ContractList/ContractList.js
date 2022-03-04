@@ -6,6 +6,7 @@ import {
   Divider, InputBase, Paper, Dialog
 } from '@mui/material';
 import Button from '@mui/material/Button';
+import { Dialog } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import ContractString from '../ContractString/ContractString';
@@ -64,6 +65,7 @@ export default function ContractList() {
               clientInvoices={el.ClientInvoices}
               supplierInvoices={el.SupplierInvoices}
               upds={el.Upds}
+              date={new Date(el.createdAt).toLocaleDateString()}
             />
           ))}
         </List>

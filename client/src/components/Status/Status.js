@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -13,49 +14,22 @@ import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import WorkOffIcon from '@mui/icons-material/WorkOff';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Button from '@mui/material/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { putStatusContractServer } from '../../redux/actions/contractAC';
+import { useSelector } from 'react-redux';
 
-// import { useSelector } from 'react-redux';
-
-function Status({ id }) {
-  const contract = useSelector((state) => state.contracts);
-  const index = contract.findIndex((el) => el.id === id);
-  const [drive, setDrive] = useState(contract[index].statusExport);
-  const [agreed, setAgreed] = useState(contract[index].statusApprove);
-  const [clPay, setClPay] = useState(contract[index].statusPaymentClient);
-  const [suppl, setSuppl] = useState(contract[index].statusPaymentSupplier);
-
-  const [stutus, setStutus] = useState(contract[index].statusSignature);
-  const dispatch = useDispatch();
-
-  const driveHandler = () => {
-    setDrive((prev) => !prev);
-    const status = 'statusExport';
-    dispatch(putStatusContractServer(id, !drive, status));
-  };
-  const agreedHandler = () => {
-    setAgreed((prev) => !prev);
-    const status = 'statusApprove';
-    dispatch(putStatusContractServer(id, !agreed, status));
-  };
-  const clPayHandler = () => {
-    setClPay((prev) => !prev);
-    const status = 'statusPaymentClient';
-    dispatch(putStatusContractServer(id, !clPay, status));
-  };
-  const supplPayHandler = () => {
-    setSuppl((prev) => !prev);
-    const status = 'statusPaymentSupplier';
-    dispatch(putStatusContractServer(id, !suppl, status));
-  };
-
-  const signaturePayHandler = () => {
-    const status = 'statusSignature';
-    setStutus((prev) => !prev);
-    dispatch(putStatusContractServer(id, !stutus, status));
-  };
-
+function Status({
+  id, driveHandler,
+  agreedHandler,
+  clPayHandler,
+  supplPayHandler,
+  signaturePayHandler,
+  agreed,
+  drive,
+  clPay,
+  suppl,
+  stutus
+}) {
+  const user = useSelector((state) => state.user);
+  console.log(user);
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#F5F5F5' }}>
       <Button style={{ color: '#0D1B42' }} onClick={agreedHandler} variant="text">

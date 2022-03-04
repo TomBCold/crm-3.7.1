@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import { Dialog } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 import ContractString from '../ContractString/ContractString';
 import NewContract from '../NewContract/NewContract';
 

@@ -2,26 +2,21 @@ import {
   Avatar, CardContent, Container, Grid, Paper
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-
 import { useSelector } from 'react-redux';
 import Charts from '../Charts/Charts';
 import Piee from '../Piee/Piee';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary
-}));
-
 function UserPage() {
   const user = useSelector((state) => state.user);
-
-  console.log(user['Role.title']);
-
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary
+  }));
   return (
     <>
       <Container style={{ marginTop: 60 }}>
@@ -65,33 +60,22 @@ function UserPage() {
                 <Item>{user.telephone}</Item>
               </Grid>
             </Grid>
-
           </Grid>
         </Grid>
       </Container>
       <Container fixed>
         <Grid container spacing={2}>
           <Grid item xs={7}>
-
             <CardContent>
-
               статиститка за год
-
               <Charts />
-
             </CardContent>
-
           </Grid>
           <Grid item xs={4}>
-
             <CardContent>
-
               статиститка
-
               <Piee />
-
             </CardContent>
-
           </Grid>
         </Grid>
       </Container>

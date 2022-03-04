@@ -22,7 +22,10 @@ function Header() {
   const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
   const user = useSelector((state) => state.user);
+  // const { photo } = user;
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -164,4 +167,5 @@ function Header() {
     </AppBar>
   );
 }
+
 export default Header;

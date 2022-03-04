@@ -108,6 +108,16 @@ app.post('/addUser', async (req, res) => {
   }
 });
 
+app.post('/avatar', upload.single('file'), async (req, res) => {
+  try {
+    if (req.file) {
+      res.json(req.file);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.listen(process.env.PORT, () => {
   console.log('server start ', process.env.PORT);
 });

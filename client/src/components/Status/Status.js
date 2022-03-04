@@ -29,10 +29,9 @@ function Status({
   stutus
 }) {
   const user = useSelector((state) => state.user);
-  console.log(user);
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#F5F5F5' }}>
-      <Button style={{ color: '#0D1B42' }} onClick={agreedHandler} variant="text">
+      <Button style={{ color: '#0D1B42' }} onClick={user['Role.title'] === 'Director' ? agreedHandler : () => 1} variant="text">
         <ListItem>
           <ListItemAvatar>
 
@@ -53,7 +52,7 @@ function Status({
           {drive ? <ListItemText style={{ color: '#0D1B42' }} primary="Вывезли" /> : <ListItemText primary="Не вывезли" />}
         </ListItem>
       </Button>
-      <Button style={{ color: '#0D1B42' }} onClick={clPayHandler} variant="text">
+      <Button style={{ color: '#0D1B42' }} onClick={user['Role.title'] === 'Director' ? clPayHandler : () => 1} variant="text">
         <ListItem>
           <ListItemAvatar>
 
@@ -63,7 +62,7 @@ function Status({
           {clPay ? <ListItemText style={{ color: '#0D1B42' }} primary="Клиент оплатил" /> : <ListItemText primary="Клиент не оплатил" />}
         </ListItem>
       </Button>
-      <Button style={{ color: '#0D1B42' }} onClick={supplPayHandler} variant="text">
+      <Button style={{ color: '#0D1B42' }} onClick={user['Role.title'] === 'Director' ? supplPayHandler : () => 1} variant="text">
         <ListItem>
           <ListItemAvatar>
 

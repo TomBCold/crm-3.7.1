@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import ContractString from '../ContractString/ContractString';
 import NewContract from '../NewContract/NewContract';
+import style from './ContractList.module.css';
 
 export default function ContractList() {
   const contracts = useSelector((state) => state.contracts);
@@ -46,6 +47,22 @@ export default function ContractList() {
           </Dialog>
         </Typography>
         <List sx={{ width: '100%' }}>
+          <div className={style.stat}>
+            <div className={style.first}>
+
+              <div>Номер</div>
+              <div>Дата</div>
+              <div>Клиент</div>
+            </div>
+            <div className={style.status}><div>Статус</div></div>
+            <div className={style.client}>
+              <div>Клиент</div>
+              <div>Поставщик</div>
+              <div>Дельта</div>
+
+            </div>
+            <div className={style.menedjer}>Менеджер</div>
+          </div>
           {filterContracts.map((el) => (
             <ContractString
               key={el.id}

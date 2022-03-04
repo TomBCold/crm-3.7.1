@@ -6,6 +6,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import DescriptionIcon from '@mui/icons-material/Description';
+// import { Link } from 'react-router-dom';
 import Status from '../Status/Status';
 import style from './ContractFull.module.css';
 
@@ -27,6 +28,7 @@ function ContractFull({
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  console.log(supplierInvoices);
   return (
     <div className={style.content}>
       <div className={style.status}>
@@ -58,19 +60,26 @@ function ContractFull({
               <TabPanel value="1">
                 <p>Счета от клиентов</p>
                 {clientInvoices.map((el) => (
-                  <DescriptionIcon
-                    key={el}
-                    sx={{ fontSize: 40 }}
-                  />
+                  <a href={`http://localhost:3001${el.url}`} target="_blank" rel="noopener noreferrer" download>
+
+                    <DescriptionIcon
+                      key={el}
+                      sx={{ fontSize: 40 }}
+                    />
+                  </a>
                 ))}
               </TabPanel>
               <TabPanel value="2">
                 <p>Счета от поставщиков</p>
                 {supplierInvoices.map((el) => (
-                  <DescriptionIcon
-                    key={el}
-                    sx={{ fontSize: 40 }}
-                  />
+                  <a href={`http://localhost:3001${el.url}`} target="_blank" rel="noopener noreferrer" download>
+
+                    <DescriptionIcon
+                      key={el}
+                      sx={{ fontSize: 40 }}
+                    />
+                  </a>
+
                 ))}
               </TabPanel>
               <TabPanel value="3">Отгрузочные документы</TabPanel>

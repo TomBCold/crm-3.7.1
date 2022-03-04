@@ -127,22 +127,28 @@ function ContractString(
           <ListItemAvatar>
             <Avatar><FolderIcon /></Avatar>
           </ListItemAvatar>
-          <ListItemText primary={id}>{id}</ListItemText>
+          <ListItemText primary={id} className={style.id}>{id}</ListItemText>
           <ListItemText primary={date}>{date}</ListItemText>
-          <ListItemText primary={clientName}>{clientName}</ListItemText>
-          <ListItemText>
-            {agreed ? <SentimentSatisfiedAltIcon fontSize="large" color="success" />
-              : <SentimentVeryDissatisfiedIcon fontSize="large" />}
+          <ListItemText primary={clientName} className={style.name}>{clientName}</ListItemText>
+          <div className={style.iconStat}>
 
-          </ListItemText>
-          <ListItemText>{drive ? <LocalShippingIcon fontSize="large" color="success" /> : <LocalShippingIcon fontSize="large" />}</ListItemText>
-          <ListItemText>{clPay ? <CreditScoreIcon fontSize="large" color="success" /> : <CreditCardIcon fontSize="large" />}</ListItemText>
-          <ListItemText>{suppl ? <WorkOutlineIcon fontSize="large" color="success" /> : <WorkOffIcon fontSize="large" />}</ListItemText>
-          <ListItemText>{stutus ? <AssignmentTurnedInIcon fontSize="large" color="success" /> : <AssignmentIcon fontSize="large" />}</ListItemText>
+            <ListItemText>
+              {agreed ? <SentimentSatisfiedAltIcon fontSize="large" color="success" />
+                : <SentimentVeryDissatisfiedIcon fontSize="large" />}
+
+            </ListItemText>
+            <ListItemText>{drive ? <LocalShippingIcon fontSize="large" color="success" /> : <LocalShippingIcon fontSize="large" />}</ListItemText>
+            <ListItemText>{clPay ? <CreditScoreIcon fontSize="large" color="success" /> : <CreditCardIcon fontSize="large" />}</ListItemText>
+            <ListItemText>{suppl ? <WorkOutlineIcon fontSize="large" color="success" /> : <WorkOffIcon fontSize="large" />}</ListItemText>
+            <ListItemText>{stutus ? <AssignmentTurnedInIcon fontSize="large" color="success" /> : <AssignmentIcon fontSize="large" />}</ListItemText>
+          </div>
           <ListItemText />
-          <ListItemText primary={clientInvoicesSum}>{clientInvoicesSum}</ListItemText>
-          <ListItemText primary={supplierInvoicesSum}>{supplierInvoicesSum}</ListItemText>
-          <ListItemText primary={delta}>{delta}</ListItemText>
+          <div className={style.sum}>
+
+            <ListItemText primary={clientInvoicesSum}>{clientInvoicesSum}</ListItemText>
+            <ListItemText primary={supplierInvoicesSum}>{supplierInvoicesSum}</ListItemText>
+            <ListItemText primary={delta}>{delta}</ListItemText>
+          </div>
           <ListItemText primary={userName}>{userName}</ListItemText>
         </div>
       </ListItem>

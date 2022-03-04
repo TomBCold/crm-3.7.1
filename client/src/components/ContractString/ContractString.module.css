@@ -12,3 +12,22 @@ display: none;
     width: 100%;
 }
 
+
+.name{
+  width: 130px;
+}
+.iconStat{
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+}
+
+.sum {
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+}
+.id {
+  width: 30px;
+}
+

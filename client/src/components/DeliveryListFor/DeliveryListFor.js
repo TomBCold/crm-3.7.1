@@ -16,7 +16,7 @@ function DeliveryListFor() {
 
   const dispatch = useDispatch();
   const forwarders = useSelector((state) => state.forwarders);
-
+  console.log(forwarders);
   const filterForwarders = forwarders.filter((forwarder) => forwarder.name.toLowerCase()
     .includes(input.toLowerCase()) || forwarder.telephone
     .includes(input));

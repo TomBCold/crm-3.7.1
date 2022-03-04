@@ -27,7 +27,6 @@ function ContractFull({
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <div className={style.content}>
       <div className={style.status}>
@@ -51,9 +50,9 @@ function ContractFull({
             <TabContext value={value || 1}>
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList onChange={handleChange} aria-label="lab API tabs example">
-                  <Tab label="Счета от клиентов" value="1" />
-                  <Tab label="Счета от поставщиков" value="2" />
-                  <Tab label="Отгрузочные документы" value="3" />
+                  <Tab style={{ color: '#FF5E5B' }} label="Счета от клиентов" value="1" />
+                  <Tab style={{ color: '#FF5E5B' }} label="Счета от поставщиков" value="2" />
+                  <Tab style={{ color: '#FF5E5B' }} label="Отгрузочные документы" value="3" />
                 </TabList>
               </Box>
               <TabPanel value="1">

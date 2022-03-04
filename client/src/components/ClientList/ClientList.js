@@ -3,7 +3,8 @@ import List from '@mui/material/List';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import {
-  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField
+  Dialog, DialogActions, DialogContent, DialogContentText,
+  DialogTitle, Divider, InputBase, Paper, TextField
 } from '@mui/material';
 import ClientItem from '../ClientItem/ClientItem';
 import { addClient } from '../../redux/actions/clientAC';
@@ -17,6 +18,13 @@ export default function ClientList() {
   const [inputType, setInputType] = useState('');
   const [inputInn, setInputInn] = useState('');
   const [inputTelephone, setInputTelephone] = useState('');
+  const [input, setInput] = useState('');
+
+  const filterClient = clients.filter((client) => client.name.toLowerCase()
+    .includes(input.toLowerCase()) || client.telephone
+    .includes(input) || client.inn
+    .includes(input) || client.User.name.toLowerCase()
+    .includes(input.toLowerCase()));
   const handleName = (e) => {
     setInputName(e.target.value);
   };
@@ -41,7 +49,13 @@ export default function ClientList() {
   };
   return (
     <div>
-      <Button variant="outlined" onClick={() => setIsOpen(!isOpen)}>
+      <Button
+        style={{
+          color: '#FF5E5B', borderColor: '#FF5E5B', marginTop: 40, marginBottom: 30
+        }}
+        variant="outlined"
+        onClick={() => setIsOpen(!isOpen)}
+      >
         Добавить
       </Button>
       <Dialog open={isOpen}>
@@ -103,7 +117,23 @@ export default function ClientList() {
         </DialogActions>
       </Dialog>
       <List sx={{ width: '100%' }}>
-        {clients.map((el) => (
+        <Paper
+          component="form"
+          sx={{
+            p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%'
+          }}
+        >
+
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="Поиск"
+            inputProps={{ 'aria-label': 'search google maps' }}
+            input={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        </Paper>
+        {filterClient.map((el) => (
           <ClientItem
             key={el.id}
             id={el.id}

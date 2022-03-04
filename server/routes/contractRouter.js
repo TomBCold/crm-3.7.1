@@ -9,30 +9,14 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const contracts = await Contract.findAll({
     include: [
-      {
-        model: User
-      },
-      {
-        model: Client
-      },
-      {
-        model: Driver
-      },
-      {
-        model: Forwarder
-      },
-      {
-        model: ClientInvoice
-      },
-      {
-        model: SupplierInvoice
-      },
-      {
-        model: Upd
-      },
-      {
-        model: Comment
-      }],
+      { model: User },
+      { model: Client },
+      { model: Driver },
+      { model: Forwarder },
+      { model: ClientInvoice },
+      { model: SupplierInvoice },
+      { model: Upd },
+      { model: Comment }],
     order: [['id', 'DESC']]
   });
   res.json(contracts);
@@ -64,71 +48,66 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.post('/', upload.single('file'), async (req, res) => {
-  const
-    {
+router.post('/', upload.fields([
+  { name: 'imgClientInvoice', maxCount: 1 },
+  { name: 'imgSupplierInvoice', maxCount: 1 },
+  { name: 'urlUpd', maxCount: 1 }
+]), async (req, res) => {
+  try {
+    const
+      {
+        userId,
+        clientId,
+        driverId,
+        forwarderId,
+        fileNameClientInvoice,
+        sumClientInvoice,
+        fileNameSupplierInvoice,
+        sumSupplierInvoice,
+        fileNameUpd,
+        sumUpd
+      } = req.body;
+    await Contract.create({
       userId,
       clientId,
       driverId,
       forwarderId,
-      imgClientInvoice,
-      sumClientInvoice,
-      imgSupplierInvoice,
-      sumSupplierInvoice,
-      imgUpd,
-      sumUpd
-    } = req.body;
-  await Contract.create({
-    userId,
-    clientId,
-    driverId,
-    forwarderId,
-    statusApprove: false,
-    statusPaymentClient: false,
-    statusPaymentSupplier: false,
-    statusExport: false,
-    statusSignature: false,
-    statusPackage: false
-  });
-  const newContract = Contract.findOne({ order: [['id', 'DESC']] });
-  await ClientInvoice.create({
-    contractId: newContract.id, sum: sumClientInvoice, url: imgClientInvoice, clientId
-  });
-  await SupplierInvoice.create({
-    contractId: newContract.id, sum: sumSupplierInvoice, url: imgSupplierInvoice, supplierId: 1
-  });
-  await Upd.create({
-    contractId: newContract.id, sum: sumUpd, url: imgUpd, supplierId: 1
-  });
-  const contract = await Contract.findOne({
-    include: [
-      {
-        model: User
-      },
-      {
-        model: Client
-      },
-      {
-        model: Driver
-      },
-      {
-        model: Forwarder
-      },
-      {
-        model: ClientInvoice
-      },
-      {
-        model: SupplierInvoice
-      },
-      {
-        model: Upd
-      },
-      {
-        model: Comment
-      }],
-    order: [['id', 'DESC']]
-  });
-  res.json({ contract });
+      statusApprove: false,
+      statusPaymentClient: false,
+      statusPaymentSupplier: false,
+      statusExport: false,
+      statusSignature: false,
+      statusPackage: false
+    });
+    const newContract = await Contract.findOne({ order: [['id', 'DESC']] });
+    await ClientInvoice.create({
+      contractId: newContract.id, sum: sumClientInvoice, url: `/img/${req.body.fileNameClientInvoice}`, clientId
+    });
+    await SupplierInvoice.create({
+      contractId: newContract.id,
+      sum: sumSupplierInvoice,
+      url: `/img/${req.body.fileNameSupplierInvoice}`,
+      supplierId: 1
+    });
+    await Upd.create({
+      contractId: newContract.id, sum: sumUpd, url: `/img/${req.body.fileNameUpd}`, supplierId: 1
+    });
+    const contract = await Contract.findOne({
+      include: [
+        { model: User },
+        { model: Client },
+        { model: Driver },
+        { model: Forwarder },
+        { model: ClientInvoice },
+        { model: SupplierInvoice },
+        { model: Upd },
+        { model: Comment }],
+      order: [['id', 'DESC']]
+    });
+    res.json({ contract });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;

@@ -31,8 +31,8 @@ function Status({
   const user = useSelector((state) => state.user);
   console.log(user);
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <Button onClick={agreedHandler} variant="text">
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#F5F5F5' }}>
+      <Button style={{ color: '#0D1B42' }} onClick={agreedHandler} variant="text">
         <ListItem>
           <ListItemAvatar>
 
@@ -40,47 +40,47 @@ function Status({
               : <SentimentVeryDissatisfiedIcon fontSize="large" />}
 
           </ListItemAvatar>
-          {agreed ? <ListItemText primary="Согласовано" /> : <ListItemText primary="Не согласовано" />}
+          {agreed ? <ListItemText style={{ color: '#0D1B42' }} primary="Согласовано" /> : <ListItemText primary="Не согласовано" />}
         </ListItem>
       </Button>
-      <Button onClick={driveHandler} variant="text">
+      <Button style={{ color: '#0D1B42' }} onClick={driveHandler} variant="text">
         <ListItem>
           <ListItemAvatar>
 
             {drive ? <LocalShippingIcon fontSize="large" color="success" /> : <LocalShippingIcon fontSize="large" />}
           </ListItemAvatar>
           {/* eslint-disable-next-line no-return-assign  */}
-          {drive ? <ListItemText primary="Вывезли" /> : <ListItemText primary="Не вывезли" />}
+          {drive ? <ListItemText style={{ color: '#0D1B42' }} primary="Вывезли" /> : <ListItemText primary="Не вывезли" />}
         </ListItem>
       </Button>
-      <Button onClick={clPayHandler} variant="text">
+      <Button style={{ color: '#0D1B42' }} onClick={clPayHandler} variant="text">
         <ListItem>
           <ListItemAvatar>
 
             {clPay ? <CreditScoreIcon fontSize="large" color="success" /> : <CreditCardIcon fontSize="large" />}
 
           </ListItemAvatar>
-          {clPay ? <ListItemText primary="Клиент оплатил" /> : <ListItemText primary="Клиент не оплатил" />}
+          {clPay ? <ListItemText style={{ color: '#0D1B42' }} primary="Клиент оплатил" /> : <ListItemText primary="Клиент не оплатил" />}
         </ListItem>
       </Button>
-      <Button onClick={supplPayHandler} variant="text">
+      <Button style={{ color: '#0D1B42' }} onClick={supplPayHandler} variant="text">
         <ListItem>
           <ListItemAvatar>
 
             {suppl ? <WorkOutlineIcon fontSize="large" color="success" /> : <WorkOffIcon fontSize="large" />}
 
           </ListItemAvatar>
-          {suppl ? <ListItemText primary="Закупка оплачена" /> : <ListItemText primary="Закупка не оплачена" />}
+          {suppl ? <ListItemText style={{ color: '#0D1B42' }} primary="Закупка оплачена" /> : <ListItemText primary="Закупка не оплачена" />}
         </ListItem>
       </Button>
-      <Button onClick={signaturePayHandler} variant="text">
+      <Button style={{ color: '#0D1B42' }} onClick={signaturePayHandler} variant="text">
         <ListItem>
           <ListItemAvatar>
 
             {stutus ? <AssignmentTurnedInIcon fontSize="large" color="success" /> : <AssignmentIcon fontSize="large" />}
 
           </ListItemAvatar>
-          {stutus ? <ListItemText primary="Документы подписаны" /> : <ListItemText primary="Документы не подписаны" />}
+          {stutus ? <ListItemText style={{ color: '#0D1B42' }} primary="Документы подписаны" /> : <ListItemText primary="Документы не подписаны" />}
         </ListItem>
       </Button>
     </List>

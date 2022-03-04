@@ -2,7 +2,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import {
   Collapse, Divider, InputBase, List, ListItemButton,
-  ListItemIcon, ListItemText, ListSubheader, Paper
+  ListItemIcon, ListItemText, Typography, Paper
 } from '@mui/material';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import React, { useEffect, useState } from 'react';
@@ -35,9 +35,9 @@ function DeliveryListFor() {
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={(
-        <ListSubheader component="div" id="nested-list-subheader">
+        <Typography variant="h6" component="div" style={{ marginBottom: 20, color: '#0D1B42' }}>
           Список экспедиторов
-        </ListSubheader>
+        </Typography>
       )}
     >
 

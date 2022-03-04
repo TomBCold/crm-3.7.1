@@ -30,7 +30,13 @@ function ModalFor() {
   };
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpenFor}>
+      <Button
+        style={{
+          color: '#FF5E5B', borderColor: '#FF5E5B', marginTop: 20, marginBottom: 20
+        }}
+        variant="outlined"
+        onClick={handleClickOpenFor}
+      >
         Добавить экспедитора
       </Button>
       <Dialog open={openModalFor} onClose={handleCloseFor}>
@@ -63,8 +69,8 @@ function ModalFor() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseFor}>Отмена</Button>
-          <Button onClick={handleChengeSubmit}>Добавить</Button>
+          <Button style={{ color: '#FF5E5B' }} onClick={handleCloseFor}>Отмена</Button>
+          <Button style={{ color: '#FF5E5B' }} onClick={handleChengeSubmit}>Добавить</Button>
         </DialogActions>
       </Dialog>
 

@@ -4,5 +4,7 @@ export const initState = {
   clients: [],
   contracts: [],
   user: { status: 'process' },
-  carType: []
+  carType: [],
+  users: [],
+  roles: []
 };

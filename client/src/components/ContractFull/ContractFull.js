@@ -1,4 +1,5 @@
-import React from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -7,7 +8,10 @@ import TabPanel from '@mui/lab/TabPanel';
 import Status from '../Status/Status';
 import style from './ContractFull.module.css';
 
-function ContractFull({ id }) {
+function ContractFull({
+  // eslint-disable-next-line no-unused-vars
+  id, clientId, clientInvoices, supplierInvoices, driverName, forwarderName, upds
+}) {
   const [value, setValue] = React.useState(null);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -23,13 +27,13 @@ function ContractFull({ id }) {
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList onChange={handleChange} aria-label="lab API tabs example">
-                  <Tab label="Счета от клиентов" value="1" />
-                  <Tab label="Счета от поставщиков" value="2" />
-                  <Tab label="Отгрузочные документы" value="3" />
+                  <Tab style={{ color: '#FF5E5B' }} label="Счета от клиентов" value="1" />
+                  <Tab style={{ color: '#FF5E5B' }} label="Счета от поставщиков" value="2" />
+                  <Tab style={{ color: '#FF5E5B' }} label="Отгрузочные документы" value="3" />
                 </TabList>
               </Box>
               <TabPanel value="1">
-                Счета от клиентов
+                <p>Счета от клиентов</p>
               </TabPanel>
               <TabPanel value="2">Счета от поставщиков</TabPanel>
               <TabPanel value="3">Отгрузочные документы</TabPanel>

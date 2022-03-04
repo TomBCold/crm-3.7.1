@@ -25,8 +25,20 @@ export const putStatusContract = (value, status) => ({
 });
 
 export const putStatusContractServer = (id, stutus, status) => async (dispatch) => {
-  console.log(stutus);
   const resp = await axios.put(`/contract/${id}`, { stutus, status });
-  console.log(resp.data);
   dispatch(putStatusContract(resp.data, status));
+};
+
+export const addNewContract = (value) => ({
+  type: 'ADD_CONTRACT',
+  payload: value
+});
+
+export const addContract = (contractForm) => async (dispatch) => {
+  const res = await axios.post('/contract', contractForm, {
+    headers: {
+      'content-type': 'multipart/form-data'
+    }
+  });
+  dispatch(addNewContract(res.data.contract));
 };

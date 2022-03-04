@@ -30,8 +30,8 @@ function ContractString(
     statusPaymentSupplier,
     statusSignature,
     userName,
-    // driverName,
-    // forwarderName,
+    driverName,
+    forwarderName,
     clientInvoices,
     supplierInvoices,
     upds
@@ -93,13 +93,20 @@ function ContractString(
           <ListItemText primary={supplierInvoicesSum}>{supplierInvoicesSum}</ListItemText>
           <ListItemText primary={updsSum}>{updsSum}</ListItemText>
           <ListItemText primary={userName}>{userName}</ListItemText>
-
         </div>
       </ListItem>
       <div className={isOpen ? style.isOpen : style.isDisable}>
-        <ContractFull key={id} id={id} clientId={clientId} />
+        <ContractFull
+          key={id}
+          id={id}
+          clientId={clientId}
+          clientInvoices={clientInvoices}
+          supplierInvoices={supplierInvoices}
+          driverName={driverName}
+          forwarderName={forwarderName}
+          upds={upds}
+        />
       </div>
-
     </>
   );
 }

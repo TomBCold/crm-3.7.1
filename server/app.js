@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+// import { WebSocketServer } from 'ws';
 const FileStore = require('session-file-store')(session);
 const upload = require('./middleware/allMiddleware');
 const { User, Role } = require('./db/models');
@@ -14,9 +15,20 @@ const driverRouter = require('./routes/driverRouter');
 const forwarderRouter = require('./routes/forwarderRouter');
 const carTypesRouter = require('./routes/carTypesRouter');
 const contractRouter = require('./routes/contractRouter');
-const invoiceRouter = require('./routes/invoiceRouter');
+const roleRouter = require('./routes/roleRouter');
 
 const app = express();
+
+// const wss = new WebSocket.Server({ port: 9077 });
+
+// wss.on('connection', (client) => {
+//   console.log('connection');
+//   client.on('message', (data) => {
+//     console.log('received: %s', data);
+//   });
+
+//   client.send('something');
+// });
 
 app.use(cors({
   origin: true,
@@ -45,7 +57,7 @@ app.use('/forwarders', forwarderRouter);
 app.use('/types', carTypesRouter);
 app.use('/client', clientRouter);
 app.use('/contract', contractRouter);
-app.use('/invoice', invoiceRouter);
+app.use('/roles', roleRouter);
 
 app.post('/auth', async (req, res) => {
   const { email, password } = req.body;
@@ -67,10 +79,34 @@ app.get('/check', async (req, res) => {
   }
   res.sendStatus(401);
 });
-app.post('/logout', (req,res) => {
-  req.session.destroy()
-  res.end()
-})
+app.post('/logout', (req, res) => {
+  req.session.destroy();
+  res.end();
+});
+
+app.get('/users', async (req, res) => {
+  const users = await User.findAll({ include: { model: Role } });
+
+  res.json({ users });
+});
+
+app.post('/addUser', async (req, res) => {
+  try {
+    const {
+      name, telephone, password, email, roleId
+    } = req.body;
+    const addUser = await User.create({
+      name, telephone, password, email, roleId
+    });
+    const newUser = await User.findOne({
+      order: [['id', 'DESC']],
+      include: { model: Role }
+    });
+    res.json({ newUser });
+  } catch (err) {
+    res.sendStatus(500);
+  }
+});
 
 app.listen(process.env.PORT, () => {
   console.log('server start ', process.env.PORT);

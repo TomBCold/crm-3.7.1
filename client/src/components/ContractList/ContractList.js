@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
-import { Divider, InputBase, Paper } from '@mui/material';
+import {
+  Divider, InputBase, Paper, Dialog
+} from '@mui/material';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 import ContractString from '../ContractString/ContractString';
+import NewContract from '../NewContract/NewContract';
 
 export default function ContractList() {
   const contracts = useSelector((state) => state.contracts);
   const [input, setInput] = useState('');
   const filterContracts = contracts.filter((contract) => contract.Client.name.toLowerCase()
     .includes(input.toLowerCase()));
-
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => setOpen(false);
   return (
-    <div>
-      <Box sx={{ flexGrow: 1 }}>
+    <Container style={{ bgcolor: '#F5F5F5' }}>
+      <Box sx={{ flexGrow: 1, bgcolor: '#F5F5F5', borderRadius: 8 }}>
         <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
           <Paper
             component="form"
@@ -32,6 +38,12 @@ export default function ContractList() {
             />
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           </Paper>
+          <Button variant="outlined" onClick={() => setOpen(true)}>
+            Добавить
+          </Button>
+          <Dialog open={open}>
+            <NewContract handleClose={handleClose} />
+          </Dialog>
         </Typography>
         <List sx={{ width: '100%' }}>
           {filterContracts.map((el) => (
@@ -56,6 +68,6 @@ export default function ContractList() {
           ))}
         </List>
       </Box>
-    </div>
+    </Container>
   );
 }

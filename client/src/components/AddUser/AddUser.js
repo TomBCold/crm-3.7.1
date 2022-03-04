@@ -25,7 +25,6 @@ function AddUser() {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
   const dispatch = useDispatch();
-  console.log(roles);
   useEffect(() => {
     dispatch(getAllRolesFromServer());
   }, []);

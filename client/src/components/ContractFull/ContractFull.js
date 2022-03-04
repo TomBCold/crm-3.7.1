@@ -5,27 +5,49 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import DescriptionIcon from '@mui/icons-material/Description';
 import Status from '../Status/Status';
 import style from './ContractFull.module.css';
 
 function ContractFull({
   // eslint-disable-next-line no-unused-vars
-  id, clientId, clientInvoices, supplierInvoices, driverName, forwarderName, upds
+  id, clientId, clientInvoices, supplierInvoices, driverName, forwarderName, upds, driveHandler,
+  agreedHandler,
+  clPayHandler,
+  supplPayHandler,
+  signaturePayHandler,
+  agreed,
+  drive,
+  clPay,
+  suppl,
+  stutus,
+  delta
 }) {
   const [value, setValue] = React.useState(null);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <div className={style.content}>
       <div className={style.status}>
-        <Status id={id} />
+        <Status
+          id={id}
+          driveHandler={driveHandler}
+          agreedHandler={agreedHandler}
+          clPayHandler={clPayHandler}
+          supplPayHandler={supplPayHandler}
+          signaturePayHandler={signaturePayHandler}
+          agreed={agreed}
+          drive={drive}
+          clPay={clPay}
+          suppl={suppl}
+          stutus={stutus}
+        />
       </div>
       <div className={style.info}>
         <div className={style.invoice}>
           <Box sx={{ width: '100%', typography: 'body1' }}>
-            <TabContext value={value}>
+            <TabContext value={value || 1}>
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList onChange={handleChange} aria-label="lab API tabs example">
                   <Tab style={{ color: '#FF5E5B' }} label="Счета от клиентов" value="1" />
@@ -35,64 +57,40 @@ function ContractFull({
               </Box>
               <TabPanel value="1">
                 <p>Счета от клиентов</p>
-
-                {/* <div className="mb-3">
-
-                  <input
-                    type="file"
-                    onChange={(e) => setImg(e.target.files[0])}
+                {clientInvoices.map((el) => (
+                  <DescriptionIcon
+                    key={el}
+                    sx={{ fontSize: 40 }}
                   />
-                  <input
-                    type="count"
-                    plaseholder="Сумма"
-                    onChange={(e) => setSum(e.target.value)}
-                  />
-                </div> */}
-                <DriveFolderUploadIcon sx={{ fontSize: 70 }} style={{ color: '#FF5E5B' }} onClick={handleOpen} />
-                {/* <Button onClick={handleOpen}>Open modal</Button> */}
-                <div>
-                  <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
-                    <Box sx={s}>
-                      <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Добавьте счета
-                      </Typography>
-                      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <div className="mb-3 ">
-
-                          <input
-                            type="file"
-                            onChange={(e) => setImg(e.target.files[0])}
-                          />
-                          Введите Сумму
-                          <input
-                            type="count"
-                            plaseholder="Сумма"
-                            onChange={(e) => setSum(e.target.value)}
-                          />
-                        </div>
-                        <Button onClick={uploadHandler}>
-                          загрузить
-                        </Button>
-                      </Typography>
-                    </Box>
-                  </Modal>
-                </div>
+                ))}
               </TabPanel>
-              <TabPanel value="2">Счета от поставщиков</TabPanel>
+              <TabPanel value="2">
+                <p>Счета от поставщиков</p>
+                {supplierInvoices.map((el) => (
+                  <DescriptionIcon
+                    key={el}
+                    sx={{ fontSize: 40 }}
+                  />
+                ))}
+              </TabPanel>
               <TabPanel value="3">Отгрузочные документы</TabPanel>
             </TabContext>
           </Box>
         </div>
         <div className={style.driver}>
-          <div>Водитель</div>
-          <div>Экспедитор</div>
           <div>
-            Дельта
+            <div>Водитель</div>
+            {driverName}
+          </div>
+          <div>
+            <div>Экспедитор</div>
+            <div>{forwarderName}</div>
+          </div>
+          <div>
+            <div>
+              Дельта
+            </div>
+            <div>{delta}</div>
           </div>
         </div>
       </div>

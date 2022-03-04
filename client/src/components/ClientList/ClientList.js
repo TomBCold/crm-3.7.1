@@ -3,7 +3,8 @@ import List from '@mui/material/List';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import {
-  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField
+  Dialog, DialogActions, DialogContent, DialogContentText,
+  DialogTitle, Divider, InputBase, Paper, TextField
 } from '@mui/material';
 import ClientItem from '../ClientItem/ClientItem';
 import { addClient } from '../../redux/actions/clientAC';
@@ -17,6 +18,13 @@ export default function ClientList() {
   const [inputType, setInputType] = useState('');
   const [inputInn, setInputInn] = useState('');
   const [inputTelephone, setInputTelephone] = useState('');
+  const [input, setInput] = useState('');
+
+  const filterClient = clients.filter((client) => client.name.toLowerCase()
+    .includes(input.toLowerCase()) || client.telephone
+    .includes(input) || client.inn
+    .includes(input) || client.User.name.toLowerCase()
+    .includes(input.toLowerCase()));
   const handleName = (e) => {
     setInputName(e.target.value);
   };
@@ -98,18 +106,36 @@ export default function ClientList() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => {
-            submitHandler();
-            setIsOpen(!isOpen);
-          }}
+          <Button
+            style={{ Color: '#FF5E5B' }}
+            onClick={() => {
+              submitHandler();
+              setIsOpen(!isOpen);
+            }}
           >
             Добавить
           </Button>
           <Button onClick={() => setIsOpen(!isOpen)}>Отмена</Button>
         </DialogActions>
       </Dialog>
-      <List sx={{ width: '100%' }}>
-        {clients.map((el) => (
+      <List sx={{ width: '100%', bgcolor: '#F5F5F5', borderRadius: 8 }}>
+        <Paper
+          component="form"
+          sx={{
+            p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%'
+          }}
+        >
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="Поиск"
+            inputProps={{ 'aria-label': 'search google maps' }}
+            input={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+
+          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        </Paper>
+        {filterClient.map((el) => (
           <ClientItem
             key={el.id}
             id={el.id}

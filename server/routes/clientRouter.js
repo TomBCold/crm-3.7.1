@@ -1,5 +1,6 @@
 const express = require('express');
 const { Client, User } = require('../db/models');
+const {Op} = require("sequelize")
 
 const router = express.Router();
 
@@ -25,6 +26,7 @@ router.delete('/:id', async (req, res) => {
     await Client.destroy({ where: { id } });
     res.sendStatus(200);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 });

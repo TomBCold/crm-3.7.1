@@ -4,7 +4,9 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import Tab from '@mui/material/Tab';
 import TabPanel from '@mui/lab/TabPanel';
-import { FormControl, InputLabel, Select } from '@mui/material';
+import {
+  FormControl, Grid, InputLabel, Select
+} from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
@@ -57,12 +59,12 @@ function NewContract({ handleClose }) {
   };
 
   return (
-    <div className={style.addContract}>
-      <div className={style.status}>
+    <div>
+      <div>
         <div style={{ marginTop: '8px' }}>
           <div>
-            <FormControl sx={{ width: '150px' }} fullWidth>
-              <InputLabel id="demo-simple-select-label">Клиент</InputLabel>
+            <FormControl sx={{ width: '200px', height: '100px' }} fullWidth>
+              <InputLabel style={{ }} id="demo-simple-select-label">Клиент</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -81,37 +83,47 @@ function NewContract({ handleClose }) {
           <Box sx={{ width: '100%', typography: 'body1' }}>
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <TabList onChange={handleChange} aria-label="lab API tabs example">
-                  <Tab sx={{ fontSize: 10 }} label="Счет клиенту" value="1" />
-                  <Tab sx={{ fontSize: 10 }} label="Счет от поставщика" value="2" />
-                  <Tab sx={{ fontSize: 10 }} label="Отгрузочные документы" value="3" />
+                <TabList style={{ color: '#FF5E5B' }} onChange={handleChange} aria-label="lab API tabs example">
+                  <Tab style={{ color: '#FF5E5B', fontWeight: 'bolder' }} sx={{ fontSize: 10 }} label="Счет клиенту" value="1" />
+                  <Tab style={{ color: '#FF5E5B', fontWeight: 'bolder' }} sx={{ fontSize: 10 }} label="Счет от поставщика" value="2" />
+                  <Tab style={{ color: '#FF5E5B', fontWeight: 'bolder' }} sx={{ fontSize: 10 }} label="Отгрузочные документы" value="3" />
                 </TabList>
               </Box>
               <TabPanel value="1">
-                <div className="mb-3">
+
+                <Grid item md={6}>
+
                   <input
                     type="file"
                     onChange={(e) => setImgClientInvoice(e.target.files[0])}
                   />
+                </Grid>
+                <Grid item xs={6} style={{ marginTop: 20, marginBottom: 20 }}>
+                  Введите сумму
                   <input
                     type="count"
                     plaseholder="Сумма"
                     onChange={(e) => setSumClientInvoice(e.target.value)}
                   />
-                </div>
+                </Grid>
+
               </TabPanel>
               <TabPanel value="2">
-                <div className="mb-3">
+                <Grid item md={6}>
+
                   <input
                     type="file"
                     onChange={(e) => setImgSupplierInvoice(e.target.files[0])}
                   />
+                </Grid>
+                <Grid item md={6} style={{ marginTop: 20, marginBottom: 20 }}>
+                  Введите сумму
                   <input
                     type="count"
                     plaseholder="Сумма"
                     onChange={(e) => setSumSupplierInvoice(e.target.value)}
                   />
-                </div>
+                </Grid>
               </TabPanel>
               <TabPanel value="3">
                 <div className="mb-3">
@@ -165,10 +177,10 @@ function NewContract({ handleClose }) {
         </div>
       </div>
       <div>
-        <Button onClick={submitHandler}>
+        <Button style={{ color: '#FF5E5B', borderColor: '#FF5E5B', marginTop: '20' }} onClick={submitHandler}>
           Добавить
         </Button>
-        <Button onClick={handleClose}>
+        <Button style={{ color: '#FF5E5B', borderColor: '#FF5E5B', marginTop: '20' }} onClick={handleClose}>
           Отменить
         </Button>
       </div>

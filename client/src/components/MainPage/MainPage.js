@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import Header from '../Header/Header';
 import ContractList from '../ContractList/ContractList';
 import ClientList from '../ClientList/ClientList';
@@ -12,9 +11,9 @@ import { getContracts } from '../../redux/actions/contractAC';
 import { checkUser } from '../../redux/actions/userAC';
 import UserPage from '../UserPage/UserPage';
 import style from './MainPage.module.css';
-import ChatPage from '../ChatPage/ChatPage';
 import { getAllDriversFromServer } from '../../redux/actions/driverAc';
 import { getAllForwardersFromServer } from '../../redux/actions/forwardersAc';
+import DirectorPage from '../DirectorPage/DirectorPage';
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -26,15 +25,10 @@ function MainPage() {
     dispatch(getAllForwardersFromServer());
   }, []);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const user = useSelector((state) => state.user);
   return (
     <div className={style.tools}>
       <Header />
-      <div className={style.center}>
-        {' '}
-        <Button onClick={() => setIsOpen((prev) => !prev)} variant="outlined">Открыть чат</Button>
-        {isOpen ? <ChatPage /> : null}
-      </div>
 
       <Container maxWidth="xl">
 
@@ -42,7 +36,7 @@ function MainPage() {
           <Route path="/" element={<ContractList />} />
           <Route path="/clients" element={<ClientList />} />
           <Route path="/delivery" element={<DeliveryList />} />
-          <Route path="/user" element={<UserPage />} />
+          <Route path="/user" element={user.roleId === 1 ? <UserPage /> : <DirectorPage />} />
         </Routes>
       </Container>
 

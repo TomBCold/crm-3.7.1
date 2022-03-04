@@ -106,24 +106,25 @@ export default function ClientList() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => {
-            submitHandler();
-            setIsOpen(!isOpen);
-          }}
+          <Button
+            style={{ Color: '#FF5E5B' }}
+            onClick={() => {
+              submitHandler();
+              setIsOpen(!isOpen);
+            }}
           >
             Добавить
           </Button>
           <Button onClick={() => setIsOpen(!isOpen)}>Отмена</Button>
         </DialogActions>
       </Dialog>
-      <List sx={{ width: '100%' }}>
+      <List sx={{ width: '100%', bgcolor: '#F5F5F5', borderRadius: 8 }}>
         <Paper
           component="form"
           sx={{
             p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%'
           }}
         >
-
           <InputBase
             sx={{ ml: 1, flex: 1 }}
             placeholder="Поиск"
@@ -131,6 +132,7 @@ export default function ClientList() {
             input={input}
             onChange={(e) => setInput(e.target.value)}
           />
+
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         </Paper>
         {filterClient.map((el) => (

@@ -39,7 +39,13 @@ export default function ContractList() {
             />
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           </Paper>
-          <Button variant="outlined" onClick={() => setOpen(true)}>
+          <Button
+            style={{
+              color: '#FF5E5B', borderColor: '#FF5E5B', marginTop: 20
+            }}
+            variant="outlined"
+            onClick={() => setOpen(true)}
+          >
             Добавить
           </Button>
           <Dialog open={open}>

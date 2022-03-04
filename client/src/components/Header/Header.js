@@ -52,7 +52,7 @@ function Header() {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <img src="/1234.png" alt="logo" style={{ height: '90px' }} />
+            <img src="/ logologo.png" alt="logo" style={{ height: '90px' }} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -85,7 +85,7 @@ function Header() {
               }}
             >
               {pages.map((page, i) => (
-                <Link key={page} to={link[i]}>
+                <Link style={{ textDecoration: 'none' }} key={page} to={link[i]}>
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
@@ -99,15 +99,20 @@ function Header() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            LOGO
+            CRM 7.3.1
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, i) => (
-              <Link key={page} to={link[i]}>
+              <Link style={{ textDecoration: 'none' }} key={page} to={link[i]}>
                 <Button
+                  style={{
+                    fontWeight: 'bolder', fontSize: '30', borderWidth: '2', borderColor: 'red'
+                  }}
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{
+                    my: 4, color: '#F5F5F5', display: 'block', fondWeigt: 'bolder'
+                  }}
                 >
                   {page}
                 </Button>
@@ -120,6 +125,7 @@ function Header() {
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            style={{ fontWeight: 'bolder' }}
           >
             {user.name}
           </Typography>
@@ -148,15 +154,17 @@ function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Link to="/user">
+              <Link style={{ textDecoration: 'none', color: '#0D1B42' }} to="/user">
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{settings[0]}</Typography>
                 </MenuItem>
               </Link>
-              <MenuItem onClick={() => {
-                handleCloseUserMenu();
-                dispatch(userLogout());
-              }}
+              <MenuItem
+                style={{ color: '#0D1B42' }}
+                onClick={() => {
+                  handleCloseUserMenu();
+                  dispatch(userLogout());
+                }}
               >
                 <Typography textAlign="center">{settings[1]}</Typography>
               </MenuItem>

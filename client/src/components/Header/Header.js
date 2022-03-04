@@ -42,14 +42,13 @@ function Header() {
     <AppBar position="static" style={{ background: '#0D1B42', height: 80, borderRadius: 25 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            3.7.1
+            <img src="/1234.png" alt="logo" style={{ height: '90px' }} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

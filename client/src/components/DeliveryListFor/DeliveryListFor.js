@@ -4,18 +4,13 @@ import {
   Collapse, List, ListItemButton, ListItemIcon, ListItemText, Typography
 } from '@mui/material';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllForwardersFromServer } from '../../redux/actions/forwardersAc';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import ModalFor from '../ModalFor/ModalFor';
 import DeliveryItemFor from '../DeliveryItemFor/DeliveryItemFor';
 
 function DeliveryListFor() {
-  const dispatch = useDispatch();
   const forwarders = useSelector((state) => state.forwarders);
-  useEffect(() => {
-    dispatch(getAllForwardersFromServer());
-  }, []);
   const [openFor, setOpenFor] = React.useState(false);
 
   const handleClickFor = () => {

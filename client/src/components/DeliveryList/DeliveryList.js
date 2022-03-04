@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
@@ -12,18 +12,12 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
 import { getAllDriversFromServer } from '../../redux/actions/driverAc';
-
 import DeliveryItem from '../DeliveryItem/DeliveryItem';
 import ModalDr from '../ModalDr/ModalDr';
 import DeliveryListFor from '../DeliveryListFor/DeliveryListFor';
 
 export default function DeliveryList() {
   const drivers = useSelector((state) => state.drivers);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllDriversFromServer());
-  }, []);
-
   const [openDr, setOpenDr] = React.useState(false);
 
   const handleClickDr = () => {

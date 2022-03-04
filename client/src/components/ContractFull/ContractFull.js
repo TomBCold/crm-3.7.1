@@ -1,14 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
-import Button from '@mui/material/Button';
-import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import TabPanel from '@mui/lab/TabPanel';
-import axios from 'axios';
 import Status from '../Status/Status';
 import style from './ContractFull.module.css';
 
@@ -19,43 +15,6 @@ function ContractFull({
   const [value, setValue] = React.useState(null);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-  const [img, setImg] = useState({});
-  const [sum, setSum] = useState(0);
-  const [open, setOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
-  const uploadHandler = React.useCallback(async () => {
-    try {
-      const formData = new FormData();
-      formData.append('id', id);
-      formData.append('clientId', clientId);
-      formData.append('file', img);
-      formData.append('fileName', img.name);
-      formData.append('sum', sum);
-      await axios.post('/invoice/clientInvoice', formData, {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      });
-      setImg({});
-      setSum(0);
-      handleClose();
-    } catch (err) {
-      console.log(err);
-    }
-  });
-  const handleOpen = () => setOpen(true);
-
-  const s = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4
   };
 
   return (
@@ -76,6 +35,7 @@ function ContractFull({
               </Box>
               <TabPanel value="1">
                 <p>Счета от клиентов</p>
+
                 {/* <div className="mb-3">
 
                   <input
@@ -122,7 +82,6 @@ function ContractFull({
                     </Box>
                   </Modal>
                 </div>
-
               </TabPanel>
               <TabPanel value="2">Счета от поставщиков</TabPanel>
               <TabPanel value="3">Отгрузочные документы</TabPanel>

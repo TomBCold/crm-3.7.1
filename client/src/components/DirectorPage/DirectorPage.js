@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 import { ListGroupItem } from 'reactstrap';
 import { getUsersThunk } from '../../redux/actions/usersAllAC';
 import AddUser from '../AddUser/AddUser';
-import Header from '../Header/Header';
+// import Header from '../Header/Header';
 
 function DirectorPage() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -28,7 +28,7 @@ function DirectorPage() {
 
   return (
     <Container style={{ backgroundColor: '#F5F5F5' }}>
-      <Header />
+
       <Container style={{ marginTop: 60, backgroundColor: '#F5F5F5' }}>
         <Grid md={12}>
           <Item> Big Boss </Item>

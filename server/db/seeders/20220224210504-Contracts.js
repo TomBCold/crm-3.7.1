@@ -66,6 +66,20 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     }
+    , {
+      userId: 1,
+      clientId: 3,
+      driverId: 2,
+      forwarderId: 1,
+      statusApprove: true,
+      statusPaymentClient: true,
+      statusPaymentSupplier: false,
+      statusExport: false,
+      statusSignature: false,
+      statusPackage: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
     ], {});
   },
 

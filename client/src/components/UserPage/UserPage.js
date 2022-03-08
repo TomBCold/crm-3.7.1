@@ -3,7 +3,7 @@ import {
   Avatar, CardContent, Container, Grid, Paper, Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import Charts from '../Charts/Charts';
 import Piee from '../Piee/Piee';
@@ -12,20 +12,23 @@ import Piee from '../Piee/Piee';
 
 function UserPage() {
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [img, setImg] = useState(null);
-  const [avatar, setAvatar] = useState(null);
+  // const [avatar, setAvatar] = useState(null);
 
   const sendFile = React.useCallback(async () => {
     try {
       const data = new FormData();
       data.append('file', img);
+      data.append('id', user.id);
       await axios.post('/avatar', data, {
         headers: {
           'content-type': 'multipart/form-data'
         }
       })
         .then((res) => {
-          setAvatar(res.data.path.slice(6));
+          // setAvatar(res.data.path.slice(6));
+          dispatch({ type: 'CHANGE_USER', payload: res.data.path.slice(6) });
         });
     } catch (err) {
       console.log(err);
@@ -51,12 +54,12 @@ function UserPage() {
           <Grid item md={4}>
             <Avatar sx={{ width: 260, height: 260 }}>
               {
-                avatar
+                user.photo
                   ? (
                     <img
                       style={{ width: 260, height: 260 }}
                       className="logo"
-                      src={`http://localhost:3001/${avatar}`}
+                      src={`http://localhost:3001/${user.photo}`}
                       alt="avatar"
                     />
                   )

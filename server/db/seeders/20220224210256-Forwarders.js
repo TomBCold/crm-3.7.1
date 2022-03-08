@@ -3,12 +3,17 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Forwarders', [{
-      name: 'Expeditor Vasechkin',
+      name: 'Петр Иванович',
       telephone: 89991122333,
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      name: 'Expeditor Klichko',
+      name: 'Александр Катренко',
+      telephone: 89991122333,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      name: 'Сергей Петров',
       telephone: 89991122333,
       createdAt: new Date(),
       updatedAt: new Date()

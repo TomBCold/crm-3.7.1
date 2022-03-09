@@ -4,7 +4,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Clients', [{
       userId: 1,
-      name: 'Client Ivanov',
+      name: 'Стальинтекс',
       type: 'IP',
       inn: 1234567890,
       telephone: 89991122333,
@@ -12,7 +12,25 @@ module.exports = {
       updatedAt: new Date()
     }, {
       userId: 1,
-      name: 'Client Petrov',
+      name: 'Демир-Москва',
+      type: 'OAO',
+      inn: 1234567890,
+      telephone: 89991122333,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      userId: 1,
+      name: 'Металлсервис',
+      type: 'OAO',
+      inn: 1234567890,
+      telephone: 89991122333,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      userId: 1,
+      name: 'СтеллаСтрой',
       type: 'OAO',
       inn: 1234567890,
       telephone: 89991122333,

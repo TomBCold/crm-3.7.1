@@ -13,7 +13,39 @@ module.exports = {
       clientId: 2,
       contractId: 2,
       url: 'url/url.com',
-      sum: 880000,
+      sum: 280000,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+    , {
+      clientId: 1,
+      contractId: 3,
+      url: 'url/url.com',
+      sum: 840000,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+    , {
+      clientId: 1,
+      contractId: 4,
+      url: 'url/url.com',
+      sum: 38000,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+    , {
+      clientId: 1,
+      contractId: 5,
+      url: 'url/url.com',
+      sum: 180000,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+    , {
+      clientId: 1,
+      contractId: 6,
+      url: 'url/url.com',
+      sum: 770000,
       createdAt: new Date(),
       updatedAt: new Date()
     }

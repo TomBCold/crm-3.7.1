@@ -52,7 +52,7 @@ function Header() {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <img src="/ logologo.png" alt="logo" style={{ height: '90px' }} />
+            <img src="/logo371png.png" alt="logo" style={{ height: '90px' }} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -134,7 +134,7 @@ function Header() {
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar
                 alt="Remy Sharp"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7mI0x_kfxX6yA3HkKDu897-ofpEr6QmMiQ&usqp=CAU"
+                src={`http://localhost:3001${user.photo}`}
               />
             </IconButton>
 

@@ -109,6 +109,10 @@ app.post('/addUser', async (req, res) => {
 });
 
 app.post('/avatar', upload.single('file'), async (req, res) => {
+  // await User.update(req.body.photo{where: {id: req.body.id}})
+  console.log(req.body.id);
+  console.log(req.file.filename);
+  await User.update({photo: `/img/${req.file.filename}`}, {where: {id: req.body.id}})
   try {
     if (req.file) {
       res.json(req.file);

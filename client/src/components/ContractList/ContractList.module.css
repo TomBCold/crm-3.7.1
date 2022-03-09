@@ -1,0 +1,24 @@
+.stat {
+  display: flex;
+  margin-bottom: 10px;
+  
+}
+.first{
+  display: flex;
+    width: 350px;
+    justify-content: space-evenly;
+}
+.status{
+  width: 300px;
+  display: flex;
+  justify-content: center
+}
+.client{
+  margin-left: 20px;
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+}
+.menedjer{
+  margin-left: 80px
+}
